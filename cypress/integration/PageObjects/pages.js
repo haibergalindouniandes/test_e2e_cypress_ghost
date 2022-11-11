@@ -18,14 +18,45 @@ class Pages {
     }
 
     submitLinkPages() {
-        cy.get('a[href="#/pages/"').click({ force: true });
+        return cy.get('a[href="#/pages/"');
+    }
+
+    firstPost() {
+        return cy.get('a.ember-view.permalink.gh-list-data.gh-post-list-title').first();
+    }
+
+    buttonSettingsPage() {
+        return cy.get('button[title="Settings"]');
+    }
+
+    buttonDeletePage() {
+        return cy.get('button.gh-btn.gh-btn-hover-red.gh-btn-icon.settings-menu-delete-button');
+    }
+
+    confirmButtonDeletePage() {
+        return cy.get('button.gh-btn.gh-btn-red.gh-btn-icon.ember-view');
     }
 
     getListPages() {
-        this.submitLinkPages();
+        this.submitLinkPages().click({ force: true });
         Utils.delay();
         Utils.takeScreenshot(this.instance, this.constructor.name);
         return this.listPages();
+    }
+
+    deleteFirstPage() {
+        this.getListPages();
+        this.firstPost().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.buttonSettingsPage().click({ force: true });
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.buttonDeletePage().click({ force: true });
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+        this.confirmButtonDeletePage().click({ force: true });
+        Utils.delay(2000);
+        Utils.takeScreenshot(this.instance, this.constructor.name);
     }
 
 }

@@ -1,5 +1,3 @@
-//Imports libreries
-const faker = require("faker");
 import Login from "../PageObjects/login"
 import Pages from "../PageObjects/pages";
 import { Utils } from '../../support/utils';
@@ -11,17 +9,15 @@ const passwordLogin = Cypress.env('passwordLogin') || "Zl@ifer619";
 const dashboardPage = Cypress.env('dashboardPage') || "http://localhost:2368/ghost/#/dashboard";
 
 //Test setup
-describe('Pages list', () => {
-    it(`Should list pages [ID_${executeInstance}]`, () => {
+describe('Delete page', () => {
+    it(`Should delete page [ID_${executeInstance}]`, () => {
         const login = new Login();
         const pages = new Pages();
         login.setInstance(executeInstance);
         login.login(emailLogin, passwordLogin);
         cy.url().should('be.equal', dashboardPage);
         pages.setInstance(executeInstance);
-        let listPages = pages.getListPages();
-        Utils.delay();
-        cy.get(listPages).should('have.length.greaterThan', 0)
+        pages.deleteFirstPage();
     })
 })
 

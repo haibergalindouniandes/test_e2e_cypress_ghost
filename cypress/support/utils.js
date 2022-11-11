@@ -13,8 +13,12 @@ export class Utils {
     };
 
     //Function that delay a seconds
-    static delay(instance, page) {
-        cy.wait(delay)
+    static delay(delaySeconds) {
+        if (delaySeconds != undefined) {
+            cy.wait(delaySeconds)
+        } else {
+            cy.wait(delay)
+        }
     };
 
     //Function that takes a screenshot
@@ -23,5 +27,5 @@ export class Utils {
         cy.screenshot(`${instance}/${page}`);
         this.delay();
     };
-    
+
 }
