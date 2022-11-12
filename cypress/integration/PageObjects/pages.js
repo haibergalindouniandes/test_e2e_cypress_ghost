@@ -45,7 +45,6 @@ class Pages {
     }
 
     deleteFirstPage() {
-        Utils.delay(3000);
         this.getListPages();
         this.firstPost().click({ force: true });
         Utils.delay();
