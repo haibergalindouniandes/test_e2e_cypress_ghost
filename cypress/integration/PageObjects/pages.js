@@ -1,4 +1,4 @@
-import Page from "./page"
+import Page from "./page";
 import { Utils } from '../../support/utils';
 const page = new Page();
 class Pages {
@@ -45,6 +45,7 @@ class Pages {
     }
 
     deleteFirstPage() {
+        Utils.delay(3000);
         this.getListPages();
         this.firstPost().click({ force: true });
         Utils.delay();

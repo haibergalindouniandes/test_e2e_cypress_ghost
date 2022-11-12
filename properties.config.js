@@ -8,7 +8,9 @@ module.exports = defineConfig({
     emailLogin: 'h.galindos@uniandes.edu.co',
     passwordLogin: 'Zl@ifer619',
     dashboardPage: 'http://localhost:2368/ghost/#/dashboard',
-    pagesPage: 'http://localhost:2368/ghost/#/pages/121'
+    pagesPage: 'http://localhost:2368/ghost/#/pages/121',
+    staffPage: 'http://localhost:2368/ghost/#/settings/staff',
+    settingsGeneralPage: 'http://localhost:2368/ghost/#/settings/general'
   },
   pageLoadTimeout: 300000,
   videosFolder: './results',

@@ -1,4 +1,4 @@
-import Page from "./page"
+import Page from "./page";
 import { Utils } from '../../support/utils';
 const page = new Page();
 class Login {
@@ -11,12 +11,10 @@ class Login {
 
     email(email) {
         cy.get('#ember6').clear().type(email);
-        return this;
     }
 
     password(password) {
         cy.get('#ember8').clear().type(password);
-        return this;
     }
 
     submit() {

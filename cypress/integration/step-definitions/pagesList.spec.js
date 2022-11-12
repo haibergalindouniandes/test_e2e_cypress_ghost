@@ -1,6 +1,4 @@
-//Imports libreries
-const faker = require("faker");
-import Login from "../PageObjects/login"
+import Login from "../PageObjects/login";
 import Pages from "../PageObjects/pages";
 import { Utils } from '../../support/utils';
 //Modifiable Test Variables
