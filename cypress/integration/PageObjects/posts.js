@@ -1,5 +1,5 @@
 import { Utils } from '../../support/utils';
-
+import Pages from './pages';
 class Posts {
 
     instance = 0;    
@@ -12,6 +12,38 @@ class Posts {
         return cy.get('a[href="#/posts/"]').first(); 
     }
 
+    buttonNewPost(){
+        return cy.get('a[class="ember-view gh-btn gh-btn-primary view-actions-top-row"]');
+    }
+
+    inputNewPostTitle(){
+        return cy.get('textarea[placeholder="Post title"]');
+    }
+
+    inputNewPostContent(){
+        return cy.get('div[class="koenig-editor__editor __mobiledoc-editor __has-no-content"]');
+    }
+
+    buttonReviewPost(){
+        return cy.get('button[class="gh-btn gh-btn-editor gh-editor-preview-trigger"]');
+    }
+
+    buttonPublishPost() {
+        return cy.get('.right > .darkgrey > span');  
+    }
+
+    buttonFinalReview(){
+        return cy.get('button[class="gh-btn gh-btn-black gh-btn-large"]');
+    }
+
+    buttonPublishPostNow(){
+        return cy.get('button[class="gh-btn gh-btn-large gh-btn-pulse ember-view"]');
+    }
+
+    showNewPost(){
+        return cy.get('a[class="gh-post-bookmark-wrapper"]');
+    }
+    
     firstPost() {
         return cy.get('a[class="ember-view permalink gh-list-data gh-post-list-button"]').first();
     }
@@ -55,6 +87,80 @@ class Posts {
         this.buttonSettingsPost().click({ force: true });
         Utils.delay();
         Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.buttonDeletePost().click({ force: true });
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+
+        this.confirmButtonDeletePost().click({ force: true });
+        Utils.delay(2000);
+        Utils.takeScreenshot(this.instance, this.constructor.name);       
+
+
+    }
+
+    createPost(postTitle,postContent) {
+        this.submitLinkPosts().click({ force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.buttonNewPost().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.inputNewPostTitle().clear().type(postTitle);
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.inputNewPostContent().clear().type(postContent);
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.buttonReviewPost().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.buttonPublishPost().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.buttonFinalReview().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+    
+        this.buttonPublishPostNow().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+    
+        this.showNewPost().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+    }
+
+    updatePost(postContent) {                
+        this.submitLinkPosts().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.firstPost().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);       
+       
+        this.buttonEditPost().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        //modificar contenido
+        this.inputNewPostContent().clear().type(postContent);
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+     
+        this.buttonSettingsPost().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        //cy.get('#custom-excerpt')
+        //cy.get('.checkbox > p')
 
         this.buttonDeletePost().click({ force: true });
         Utils.takeScreenshot(this.instance, this.constructor.name);
