@@ -18,7 +18,7 @@ class Pages {
     }
 
     submitLinkPages() {
-        return cy.get('a[href="#/pages/"');
+        return cy.get('a[href="#/pages/"]');
     }
 
     firstPost() {
@@ -44,6 +44,37 @@ class Pages {
         return this.listPages();
     }
 
+    buttonNewPage() {
+        return cy.get('a[href="#/editor/page/"]'); 
+    }   
+    
+    titlePage() {
+        return cy.get('textarea[placeholder="Page title"]'); 
+    }
+
+    buttonPublish() {
+        cy.get('a[href="#/pages/"').click({ force: true });
+        Utils.delay();
+        return cy.get('button[class="gh-btn gh-btn-editor darkgrey gh-publish-trigger"]');  
+    }
+
+    buttonFinalReview() {
+        return cy.get('button[class="gh-btn gh-btn-black gh-btn-large"]');  
+    }
+ 
+    buttonPublishNow() {
+        return cy.get('button[class="gh-btn gh-btn-large gh-btn-pulse ember-view"]');  
+    }
+
+    buttonEdit() {
+        return cy.get('a[class="ember-view permalink gh-list-data gh-post-list-button"]').first();  
+    }
+
+    buttonUpdate() {
+        return cy.get('button[class="gh-btn gh-btn-editor gh-editor-save-trigger green ember-view"]');  
+    }
+
+
     deleteFirstPage() {
         this.getListPages();
         this.firstPost().click({ force: true });
@@ -57,6 +88,43 @@ class Pages {
         this.confirmButtonDeletePage().click({ force: true });
         Utils.delay(2000);
         Utils.takeScreenshot(this.instance, this.constructor.name);
+    }
+
+    createPage() {
+        this.submitLinkPages().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.buttonNewPage().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.titlePage().clear().type("holaMundo");        
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.buttonPublish().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.buttonFinalReview().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.buttonPublishNow().click({ force: true });
+
+    }
+
+    modifyPage() {
+        this.submitLinkPages().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.buttonEdit().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.titlePage().clear().type("holaMundo Modificado");        
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.buttonUpdate().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.submitLinkPages().click({ force: true });  
+
     }
 
 }
