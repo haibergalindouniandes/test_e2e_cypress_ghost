@@ -24,6 +24,10 @@ class Posts {
         return cy.get('div[class="koenig-editor__editor __mobiledoc-editor __has-no-content"]');
     }
 
+    changePostContent(){
+        return cy.get('.koenig-editor__editor');
+    }
+
     buttonReviewPost(){
         return cy.get('button[class="gh-btn gh-btn-editor gh-editor-preview-trigger"]');
     }
@@ -42,6 +46,14 @@ class Posts {
 
     showNewPost(){
         return cy.get('a[class="gh-post-bookmark-wrapper"]');
+    }
+
+    showPostSettingExcerpt(){
+        return cy.get('#custom-excerpt');
+    }
+
+    showPostSettingCheckbox(){
+        return cy.get('.checkbox > p');
     }
     
     firstPost() {
@@ -146,12 +158,12 @@ class Posts {
         Utils.delay();
         Utils.takeScreenshot(this.instance, this.constructor.name);       
        
-        this.buttonEditPost().click({ force: true });
-        Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        //this.buttonEditPost().click({ force: true });
+        //Utils.delay();
+        //Utils.takeScreenshot(this.instance, this.constructor.name);
 
         //modificar contenido
-        this.inputNewPostContent().clear().type(postContent);
+        this.changePostContent().clear().type(postContent);
         Utils.delay();
         Utils.takeScreenshot(this.instance, this.constructor.name);
      
@@ -159,18 +171,51 @@ class Posts {
         Utils.delay();
         Utils.takeScreenshot(this.instance, this.constructor.name);
 
-        //cy.get('#custom-excerpt')
-        //cy.get('.checkbox > p')
-
-        this.buttonDeletePost().click({ force: true });
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        this.showPostSettingExcerpt().clear().type(postContent);
         Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+    
+        this.showPostSettingCheckbox().click();
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+    }
 
-        this.confirmButtonDeletePost().click({ force: true });
-        Utils.delay(2000);
-        Utils.takeScreenshot(this.instance, this.constructor.name);       
+    publishPost(postTitle,postContent) {
+        this.submitLinkPosts().click({ force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
 
+        this.buttonNewPost().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
 
+        this.inputNewPostTitle().clear().type(postTitle);
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.inputNewPostContent().clear().type(postContent);
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.buttonReviewPost().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.buttonPublishPost().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+
+        this.buttonFinalReview().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+    
+        this.buttonPublishPostNow().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
+    
+        this.showNewPost().click({force: true});
+        Utils.delay();
+        Utils.takeScreenshot(this.instance, this.constructor.name);
     }
 
 }
