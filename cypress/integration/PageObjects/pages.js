@@ -74,6 +74,14 @@ class Pages {
         return cy.get('button[class="gh-btn gh-btn-editor gh-editor-save-trigger green ember-view"]');  
     }
 
+    buttonSearch(){
+        return cy.get('button[class="gh-nav-btn-search"]');
+    } 
+
+    inputToSearch(){
+        return cy.get('.ember-basic-dropdown > .ember-view');
+    }
+
 
     deleteFirstPage() {
         this.getListPages();

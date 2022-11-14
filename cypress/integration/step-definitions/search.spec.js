@@ -1,25 +1,26 @@
-import Login from "../PageObjects/login";
-import Pages from "../PageObjects/pages";
+const faker = require("faker");
+
+import Login from "../PageObjects/login2";
 import { Utils } from '../../support/utils';
+import Pages from "../PageObjects/pages";
+
 //Modifiable Test Variables
 //Constant that allows defining the url of the web application to test
 const executeInstance = Utils.getRandomInt(0, 10000000);
+const url = Cypress.env('url') || "http://localhost:2368/ghost/#/dashboard";
 const emailLogin = Cypress.env('emailLogin') || "edgariel2004@gmail.com";
 const passwordLogin = Cypress.env('passwordLogin') || "1234512345";
 const dashboardPage = Cypress.env('dashboardPage') || "http://localhost:2368/ghost/#/dashboard";
 
 //Test setup
-describe('Pages list', () => {
-    it(`Should list pages [ID_${executeInstance}]`, () => {
-        const login = new Login();
+describe('Login', () => {
+    it(`Should create post [ID_${executeInstance}]`, () => {
+        const login = new Login();        
         const pages = new Pages();
-        login.setInstance(executeInstance);
-        login.login(emailLogin, passwordLogin);
+        login.login(url, emailLogin, passwordLogin);
         cy.url().should('be.equal', dashboardPage);
         pages.setInstance(executeInstance);
-        let listPages = pages.getListPages();
-        Utils.delay();
-        cy.get(listPages).should('have.length.greaterThan', 0)
+        pages.buttonSearch();
     })
 })
 
