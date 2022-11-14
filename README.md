@@ -4,6 +4,18 @@ Este proyecto permite realizar pruebas automatizadas de extremo a extremo de la 
 ## Escenarios de prueba 
 El proyecto cuenta con una suite de pruebas principal que tiene 20 escenarios de prueba automatizadas, los cuales se detallan a continuación:
 
+### Funcionalidades 
+
+| Funcionalidades a probar | 
+| ----- |
+| Members |
+| Pages |
+| Posts |
+| Staff |
+| Login |
+
+### Escenarios 
+
 | Identificador | Escenario | Descripción |
 | ----- | ----------- | ----------- |
 | PA_01 |  Crear nueva cuenta  |  Escenario que realiza la creación de una cuenta nueva con información aleatoria.  |
