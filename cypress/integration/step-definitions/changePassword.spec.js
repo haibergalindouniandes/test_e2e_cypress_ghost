@@ -22,7 +22,6 @@ describe('Change Password', () => {
         cy.url().should('be.equal', dashboardPage);
         staff.setInstance(executeInstance);
         staff.changePassword(passwordLogin,newPassword);
-        cy.url().should('be.equal', staffPage);
-        staff.listPeopleInvited().should('contain', emailAdrress);
+        cy.url().should('be.equal', staffPage);        
     });
 })
