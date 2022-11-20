@@ -7,7 +7,7 @@
 | Jorge Mario Carrillo Riveros | jm.carrillo@uniandes.edu.co |
 | Edgar Ariel Salamanca Camargo | ea.salamanca@uniandes.edu.co |
 
-# Pruebas Automatizadas De Extremo A Extremo Con Cypress - Aplicación Ghost (Version 5.18.0)
+# Pruebas Automatizadas De Extremo A Extremo Con Cypress - Aplicación Ghost (Version 5.22.10)
 Este proyecto permite realizar pruebas automatizadas de extremo a extremo de la aplicación Ghost, haciendo uso del API de Automatización [Cypress](https://www.cypress.io/). A continuación se explica el detalle: 
 
 ## Escenarios de prueba 
