@@ -45,10 +45,6 @@ class Tag {
         this.submitLinkTags().click({ force: true });
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
-
-
-
-
     }
 
 }

@@ -41,17 +41,15 @@ class Member {
     }
 
     selectFirstMember(){
-        cy.get('h3[class="ma0 pa0 gh-members-list-name "]').first().click({ force: true });
+        cy.get('a[class="ember-view gh-list-data"').first().click({ force: true });        
     }
 
     submitSettings(){
-        //cy.get('button[class="gh-btn gh-btn-icon icon-only gh-btn-action-icon open ember-view"]');
-        cy.get('#ember29').first().click({ force: true });
+        cy.get('button[class="gh-btn gh-btn-icon icon-only gh-btn-action-icon closed ember-view"').click({ force: true });        
     }
 
     submitDeleteMember(){
-        cy.get('ul[class="dropdown gh-member-actions-menu dropdown-menu dropdown-triangle-top-right closed fade-out closed ember-view"]').click({ force: true });
-        //cy.get('li:nth-child(2) button:nth-child(1)').click({ force: true });
+        cy.get('span[class="red"').click({ force: true });        
     }
 
     confirmDeleteMember(){
@@ -81,8 +79,7 @@ class Member {
         
         this.open();    
         Utils.delay(2000);
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
-        cy.reload();        
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());               
     }
 
 
@@ -105,8 +102,7 @@ class Member {
         
         this.open();    
         Utils.delay(2000);
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
-        cy.reload();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
     }
 
     deleteMember(emailLogin, escenario) {
@@ -131,9 +127,8 @@ class Member {
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
                 
         this.open();         
-        Utils.delay(2000);
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
-        cy.reload();
+        Utils.delay(2000);        
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
     }
 }
 export default Member;

@@ -35,7 +35,8 @@ export class Utils {
     //Function that takes a screenshot
     static takeScreenshot(emailLogin, escenario, paso) {
         this.delay();
-        cy.screenshot(`${emailLogin}/${escenario}/${paso}`);
+        //cy.screenshot(`${emailLogin}/${escenario}/${paso}`);
+        cy.screenshot(`${paso}`);
         this.delay();
     };
 

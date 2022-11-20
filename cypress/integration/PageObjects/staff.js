@@ -28,16 +28,14 @@ class Staff {
     }
 
     open() {
-        Utils.navigate('#/settings/staff');
-        //page.navigate('#/settings/staff');
+        Utils.navigate('#/settings/staff');        
     }
 
     listPeopleInvited() {
         return cy.get('h3.apps-card-app-title');
     }
 
-    selectfisrtActiveUser() {
-        //cy.get('a[class="ember-view"]').first().click({ force: true });
+    selectfisrtActiveUser() {        
         cy.get('div[class="apps-grid-cell tooltip-centered"] a[class="ember-view"]').click({ force: true });
     }    
     
@@ -120,8 +118,10 @@ class Staff {
         this.submitChangePassButton();
         Utils.delay(2000);
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
+        
         this.open();
-        cy.reload();
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     }
 
 }

@@ -102,8 +102,11 @@ class Posts {
 
         this.confirmButtonDeletePost().click({ force: true });
         Utils.delay(2000);
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());       
-
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());   
+        
+        this.submitLinkPosts().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
     }
 
@@ -167,6 +170,10 @@ class Posts {
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     
         this.showPostSettingCheckbox().click();
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
+        this.submitLinkPosts().click({ force: true });
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     }

@@ -103,7 +103,7 @@ class Pages {
         
         this.confirmButtonDeletePage().click({ force: true });
         Utils.delay(2000);
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
     }
 
     createPage(emailLogin, escenario) {

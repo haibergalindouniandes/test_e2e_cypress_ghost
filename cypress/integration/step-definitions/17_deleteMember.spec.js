@@ -18,8 +18,7 @@ const escenario = "17_delete_member";
 describe('Delete  Member', () => {
     it(escenario, () => {
         const login = new Login();
-        const member = new Member();
-        //const note = faker.lorem.text();
+        const member = new Member();        
         Utils.pruebaID_reset();
         login.login(url, emailLogin, passwordLogin, escenario);
         cy.url().should('be.equal', dashboardPage);
