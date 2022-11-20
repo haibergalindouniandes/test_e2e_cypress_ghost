@@ -51,8 +51,7 @@ El proyecto cuenta con una suite de pruebas principal que tiene 20 escenarios de
 ## Estructura de carpetas
 La estructura interna de la aplicación a nivel de carpetas y su finalidad es la siguiente:
 
-![image](https://drive.google.com/uc?export=view&id=169dirgjKP5sTfUcJAa0_ahw-JuTZznJF)
-
+![estructura_cypress](https://user-images.githubusercontent.com/111403006/202925080-6934f77b-ef1a-4c76-af9b-6cddbe4651e7.png)
 
 **cypress:** Carpeta contenedora de las funcionalidades de Cypress.
 -	**fixtures:** Donde se guarda los archivos que se usaran en los mocks, pueden ser imágenes, videos, txt etc.
@@ -82,7 +81,7 @@ Para utilizar hacer uso del test de pruebas de la aplicación Ghost, se deben se
 `./node_modules/.bin/cypress run --spec "ruta<step>", por ejemplo: ./node_modules/.bin/cypress run --spec "cypress/integration/step-definitions/13_modifyPage.spec.js"
 
 ## Resultados
-Cuando finalice la ejecución de la prueba, se generará en la carpeta de `./results` con un video de la ejecución en un navegador y adicional a esto se genera una carpeta en la ruta `./cypress/screenshots` con los screenshots tomados durante la ejecución de la prueba.
+Cuando finalice la ejecución de la prueba, se generará en la carpeta `videos` un video de la ejecución en un navegador y adicional a esto se genera en la carpeta `screenshots` los pantallazos tomados durante la ejecución de la prueba.
 
 ## Ventajas de utilizar esta herramienta
 
