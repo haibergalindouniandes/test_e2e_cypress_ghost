@@ -1,5 +1,5 @@
 import Login from "../PageObjects/login";
-import Tag from '../PageObjects/tag';
+import Pages from "../PageObjects/pages";
 import { Utils } from '../../support/utils';
 
 //Modifiable Test Variables
@@ -7,17 +7,16 @@ import { Utils } from '../../support/utils';
 
 const url = Utils.getUrl();
 const emailLogin = Utils.getEmail();
-const passwordLogin = Utils.getPassword(); 
-const escenario = "xx_create_tag";
+const passwordLogin = Utils.getPassword();
+const escenario = "03_Create_page";
 
 //Test setup
-describe('Create tag', () => {
+describe('Create page', () => {
     it(escenario, () => {        
-        const tag = new Tag();
+        const pages = new Pages();        
         const login = new Login();                
-        Utils.pruebaID_reset();
-        login.login(url, emailLogin, passwordLogin, escenario);
-        tag.createTag(emailLogin, escenario);
+        login.login(url, emailLogin, passwordLogin, escenario);         
+        pages.createPage(emailLogin, escenario);
     })    
 })
 

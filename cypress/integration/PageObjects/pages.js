@@ -39,7 +39,7 @@ class Pages {
         this.submitLinkPages().click({ force: true });
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
-        //return this.listPages();
+        return this.submitLinkPages();
     }
 
     buttonNewPage() {
@@ -72,18 +72,23 @@ class Pages {
         return cy.get('button[class="gh-btn gh-btn-editor gh-editor-save-trigger green ember-view"]');  
     }
 
-    buttonSearch(){
-        return cy.get('button[class="gh-nav-btn-search"]');
-    } 
-
     inputToSearch(){
         return cy.get('.ember-basic-dropdown > .ember-view');
     }
 
 
-    deleteFirstPage(emailLogin, escenario) {
-        this.getListPages(emailLogin, escenario);
-        
+
+    buttonSearch(emailLogin, escenario){
+        cy.get('button[class="gh-nav-btn-search"]').click({ force: true });
+        cy.get('input[class="gh-input-with-select-input"]').clear().type("Palabra a buscar");        
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+    }
+
+    deleteFirstPage(emailLogin, escenario) {        
+        this.submitLinkPages().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
         this.firstPost().click({ force: true });
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());

@@ -1,7 +1,7 @@
 //Imports libreries
 const faker = require("faker");
 import { Utils } from '../../support/utils';
-import Login from '../PageObjects/login';
+import Login from "../PageObjects/login";
 import Member from "../PageObjects/member";
 
 //Modifiable Test Variables
@@ -12,18 +12,18 @@ const dashboardPage = Utils.getDashboardPage();
 const memberPage = Utils.getMemberPage();
 const emailLogin = Utils.getEmail();
 const passwordLogin = Utils.getPassword(); 
-const escenario = "xx_delete_member";
+const escenario = "07_edit_member";
 
 //Test setup
-describe('Delete  Member', () => {
+describe('Edit  Member', () => {
     it(escenario, () => {
         const login = new Login();
         const member = new Member();
-        //const note = faker.lorem.text();
-        Utils.pruebaID_reset();
+        const note = faker.lorem.text();
+        Utils.pruebaID_reset();               
         login.login(url, emailLogin, passwordLogin, escenario);
         cy.url().should('be.equal', dashboardPage);
-        member.deleteMember(emailLogin, escenario);        
+        member.editMember(note, emailLogin, escenario);        
         cy.url().should('be.equal', memberPage);      
     });
 })

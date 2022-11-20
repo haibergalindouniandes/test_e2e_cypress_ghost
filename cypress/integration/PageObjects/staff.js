@@ -1,6 +1,4 @@
-import Page from "./page";
 import { Utils } from '../../support/utils';
-const page = new Page();
 class Staff {
 
     instance = 0;
@@ -80,6 +78,8 @@ class Staff {
         Utils.delay(2000);
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
         cy.reload();
+        Utils.delay(2000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     }
 
     revokeInvitation(email, emailLogin, escenario) {      

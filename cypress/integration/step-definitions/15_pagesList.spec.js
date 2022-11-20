@@ -8,17 +8,19 @@ const url = Utils.getUrl();
 const dashboardPage = Utils.getDashboardPage();
 const emailLogin = Utils.getEmail();
 const passwordLogin = Utils.getPassword(); 
-const escenario = "xx_delete_page";
+const escenario = "15_pages_list";
 
 //Test setup
-describe('Delete page', () => {
+describe('Pages list', () => {
     it(escenario, () => {
         const login = new Login();
         const pages = new Pages();
         Utils.pruebaID_reset();               
         login.login(url, emailLogin, passwordLogin, escenario);
-        cy.url().should('be.equal', dashboardPage);
-        pages.deleteFirstPage(emailLogin, escenario);
+        cy.url().should('be.equal', dashboardPage);        
+        let listPages = pages.getListPages(emailLogin, escenario);
+        Utils.delay();
+        cy.get(listPages).should('have.length.greaterThan', 0)
     })
 })
 

@@ -12,7 +12,7 @@ const staffPage = Utils.getStaffPage();
 const emailLogin = Utils.getEmail();
 const passwordLogin = Utils.getPassword(); 
 const newPassword = Utils.getNewPassword();
-const escenario = "xx_change_password_people";
+const escenario = "20_change_password";
 
 //Test setup
 describe('Change Password', () => {

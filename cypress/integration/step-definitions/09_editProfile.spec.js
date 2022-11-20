@@ -11,7 +11,7 @@ const url = Utils.getUrl();
 const dashboardPage = Utils.getDashboardPage();
 const emailLogin = Utils.getEmail();
 const passwordLogin = Utils.getPassword(); 
-const escenario = "xx_edit_profile_info";
+const escenario = "09_edit_profile_info";
 
 //Test setup
 describe('Edit my profile information', () => {

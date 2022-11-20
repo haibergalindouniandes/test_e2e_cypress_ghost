@@ -1,29 +1,24 @@
-//Imports libreries
-const faker = require("faker");
-import { Utils } from '../../support/utils';
 import Login from "../PageObjects/login";
-import Member from "../PageObjects/member";
-
+import Pages from "../PageObjects/pages";
+import { Utils } from '../../support/utils';
 //Modifiable Test Variables
 //Constant that allows defining the url of the web application to test
 
 const url = Utils.getUrl();
 const dashboardPage = Utils.getDashboardPage();
-const memberPage = Utils.getMemberPage();
 const emailLogin = Utils.getEmail();
 const passwordLogin = Utils.getPassword(); 
-const escenario = "xx_edit_member";
+const escenario = "18_delete_page";
 
 //Test setup
-describe('Edit  Member', () => {
+describe('Delete page', () => {
     it(escenario, () => {
         const login = new Login();
-        const member = new Member();
-        const note = faker.lorem.text();
+        const pages = new Pages();
         Utils.pruebaID_reset();               
         login.login(url, emailLogin, passwordLogin, escenario);
         cy.url().should('be.equal', dashboardPage);
-        member.editMember(note, emailLogin, escenario);        
-        cy.url().should('be.equal', memberPage);      
-    });
+        pages.deleteFirstPage(emailLogin, escenario);
+    })
 })
+

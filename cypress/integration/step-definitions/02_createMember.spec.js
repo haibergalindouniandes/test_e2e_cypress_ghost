@@ -12,7 +12,7 @@ const dashboardPage = Utils.getDashboardPage();
 const memberPage = Utils.getMemberPage();
 const emailLogin = Utils.getEmail();
 const passwordLogin = Utils.getPassword(); 
-const escenario = "xx_create_member";
+const escenario = "02_create_member";
 
 
 //Test setup

@@ -22,11 +22,7 @@ class Posts {
 
     inputNewPostContent(){
         return cy.get('div[class="koenig-editor__editor __mobiledoc-editor __has-no-content"]');
-    }
-
-    changePostContent(){
-        return cy.get('.koenig-editor__editor');
-    }
+    }    
 
     buttonReviewPost(){
         return cy.get('button[class="gh-btn gh-btn-editor gh-editor-preview-trigger"]');
@@ -76,12 +72,12 @@ class Posts {
         return cy.get('button[class="gh-btn gh-btn-red gh-btn-icon ember-view"]');
     }
 
-     getListPosts(emailLogin, escenario) {
-         this.submitLinkPosts().click({ force: true });
-         Utils.delay();
-         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
-         return this.submitLinkPosts();
-     }
+    getListPosts(emailLogin, escenario) {
+        this.submitLinkPosts().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        return this.submitLinkPosts();
+    }
     
     deleteFirstPost(emailLogin, escenario) {                    
         this.submitLinkPosts().click({ force: true });
@@ -143,79 +139,74 @@ class Posts {
         this.buttonPublishPostNow().click({force: true});
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
+        this.submitLinkPosts().click({ force: true});
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
+    }
+
+    updatePost(postContent, emailLogin, escenario) {                
+        this.submitLinkPosts().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
+        this.firstPost().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
+
+        this.buttonEditPost().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+     
+        this.buttonSettingsPost().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
+        this.showPostSettingExcerpt().clear().type(postContent);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     
-        this.showNewPost().click({force: true});
+        this.showPostSettingCheckbox().click();
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     }
 
-    updatePost(postContent) {                
-        this.submitLinkPosts().click({ force: true });
-        Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-
-        this.firstPost().click({ force: true });
-        Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);       
-       
-        //this.buttonEditPost().click({ force: true });
-        //Utils.delay();
-        //Utils.takeScreenshot(this.instance, this.constructor.name);
-
-        //modificar contenido
-        this.changePostContent().clear().type(postContent);
-        Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-     
-        this.buttonSettingsPost().click({ force: true });
-        Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-
-        this.showPostSettingExcerpt().clear().type(postContent);
-        Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-    
-        this.showPostSettingCheckbox().click();
-        Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-    }
-
-    publishPost(postTitle,postContent) {
+    publishPost(postTitle,postContent, emailLogin, escenario) {
         this.submitLinkPosts().click({ force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.buttonNewPost().click({force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.inputNewPostTitle().clear().type(postTitle);
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.inputNewPostContent().clear().type(postContent);
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.buttonReviewPost().click({force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.buttonPublishPost().click({force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.buttonFinalReview().click({force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     
         this.buttonPublishPostNow().click({force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     
-        this.showNewPost().click({force: true});
+        this.submitLinkPosts().click({ force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
     }
 
 }
