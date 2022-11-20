@@ -69,7 +69,8 @@ class Pages {
     }
 
     buttonUpdate() {
-        return cy.get('button[class="gh-btn gh-btn-editor gh-editor-save-trigger green ember-view"]');  
+        return cy.get('span').contains('Update').first();
+        //return cy.get('button[class="gh-btn gh-btn-editor gh-editor-save-trigger green ember-view"]');  
     }
 
     inputToSearch(){
