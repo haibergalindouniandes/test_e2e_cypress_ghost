@@ -1,22 +1,22 @@
-import Login2 from "../PageObjects/login2";
+import Login from "../PageObjects/login";
 import Pages from "../PageObjects/pages";
 import { Utils } from '../../support/utils';
 
 //Modifiable Test Variables
 //Constant that allows defining the url of the web application to test
-const executeInstance = Utils.getRandomInt(0, 10000000);
-const url = Cypress.env('url') || "http://localhost:3001/ghost/#/signin";
-const emailLogin = Cypress.env('emailLogin') || "miso@miso.com";
-const passwordLogin = Cypress.env('passwordLogin') || "miso123456";
+
+const url = Utils.getUrl();
+const emailLogin = Utils.getEmail();
+const passwordLogin = Utils.getPassword();
+const escenario = "xx_Create_page";
 
 //Test setup
 describe('Create page', () => {
-    it(`Should create page [ID_${executeInstance}]`, () => {        
+    it(escenario, () => {        
         const pages = new Pages();        
-        const login = new Login2();                
-        login.login(url, emailLogin, passwordLogin); 
-        pages.setInstance(executeInstance);
-        pages.createPage();
+        const login = new Login();                
+        login.login(url, emailLogin, passwordLogin, escenario);         
+        pages.createPage(emailLogin, escenario);
     })    
 })
 

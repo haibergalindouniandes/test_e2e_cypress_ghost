@@ -25,26 +25,26 @@ class Tag {
     }
 
 
-    createTag() {                
+    createTag(emailLogin, escenario) {                
         this.submitLinkTags().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.buttonNewTag().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);   
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());   
                
         this.NameTag().clear().type("Nuevo Tag");
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.buttonSave().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.submitLinkTags().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
 
 

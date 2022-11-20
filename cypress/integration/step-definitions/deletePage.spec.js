@@ -3,21 +3,22 @@ import Pages from "../PageObjects/pages";
 import { Utils } from '../../support/utils';
 //Modifiable Test Variables
 //Constant that allows defining the url of the web application to test
-const executeInstance = Utils.getRandomInt(0, 10000000);
-const emailLogin = Cypress.env('emailLogin') || "edgariel2004@gmail.com";
-const passwordLogin = Cypress.env('passwordLogin') || "1234512345";
-const dashboardPage = Cypress.env('dashboardPage') || "http://localhost:2368/ghost/#/dashboard";
+
+const url = Utils.getUrl();
+const dashboardPage = Utils.getDashboardPage();
+const emailLogin = Utils.getEmail();
+const passwordLogin = Utils.getPassword(); 
+const escenario = "xx_delete_page";
 
 //Test setup
 describe('Delete page', () => {
-    it(`Should delete page [ID_${executeInstance}]`, () => {
+    it(escenario, () => {
         const login = new Login();
         const pages = new Pages();
-        login.setInstance(executeInstance);
-        login.login(emailLogin, passwordLogin);
+        Utils.pruebaID_reset();               
+        login.login(url, emailLogin, passwordLogin, escenario);
         cy.url().should('be.equal', dashboardPage);
-        pages.setInstance(executeInstance);
-        pages.deleteFirstPage();
+        pages.deleteFirstPage(emailLogin, escenario);
     })
 })
 

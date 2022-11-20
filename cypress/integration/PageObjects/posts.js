@@ -57,7 +57,7 @@ class Posts {
     }
     
     firstPost() {
-        return cy.get('a[class="ember-view permalink gh-list-data gh-post-list-button"]').first();
+        return cy.get('a[class="ember-view permalink gh-list-data gh-post-list-button"').first();
     }
 
     buttonEditPost() {
@@ -76,77 +76,77 @@ class Posts {
         return cy.get('button[class="gh-btn gh-btn-red gh-btn-icon ember-view"]');
     }
 
-    getListPosts() {
-        this.submitLinkPosts().click({ force: true });
-        Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-        return this.submitLinkPosts();
-    }
+     getListPosts(emailLogin, escenario) {
+         this.submitLinkPosts().click({ force: true });
+         Utils.delay();
+         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+         return this.submitLinkPosts();
+     }
     
-    deleteFirstPost() {                
+    deleteFirstPost(emailLogin, escenario) {                    
         this.submitLinkPosts().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.firstPost().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);       
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());       
        
         this.buttonEditPost().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
      
         this.buttonSettingsPost().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.buttonDeletePost().click({ force: true });
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
         Utils.delay();
 
         this.confirmButtonDeletePost().click({ force: true });
         Utils.delay(2000);
-        Utils.takeScreenshot(this.instance, this.constructor.name);       
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());       
 
 
     }
 
-    createPost(postTitle,postContent) {
+    createPost(postTitle,postContent, emailLogin, escenario) {
         this.submitLinkPosts().click({ force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.buttonNewPost().click({force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.inputNewPostTitle().clear().type(postTitle);
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.inputNewPostContent().clear().type(postContent);
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.buttonReviewPost().click({force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.buttonPublishPost().click({force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
         this.buttonFinalReview().click({force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     
         this.buttonPublishPostNow().click({force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     
         this.showNewPost().click({force: true});
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     }
 
     updatePost(postContent) {                

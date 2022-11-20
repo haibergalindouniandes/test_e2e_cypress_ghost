@@ -1,22 +1,23 @@
-import Login2 from "../PageObjects/login2";
+import Login from "../PageObjects/login";
 import Tag from '../PageObjects/tag';
 import { Utils } from '../../support/utils';
 
 //Modifiable Test Variables
 //Constant that allows defining the url of the web application to test
-const executeInstance = Utils.getRandomInt(0, 10000000);
-const url = Cypress.env('url') || "http://localhost:2368/ghost/#/dashboard";
-const emailLogin = Cypress.env('emailLogin') || "edgariel2004@gmail.com";
-const passwordLogin = Cypress.env('passwordLogin') || "1234512345";
+
+const url = Utils.getUrl();
+const emailLogin = Utils.getEmail();
+const passwordLogin = Utils.getPassword(); 
+const escenario = "xx_create_tag";
 
 //Test setup
 describe('Create tag', () => {
-    it(`Should create a tag [ID_${executeInstance}]`, () => {        
+    it(escenario, () => {        
         const tag = new Tag();
-        const login = new Login2();                
-        login.login(url, emailLogin, passwordLogin);                  
-        tag.setInstance(executeInstance);
-        tag.createTag();
+        const login = new Login();                
+        Utils.pruebaID_reset();
+        login.login(url, emailLogin, passwordLogin, escenario);
+        tag.createTag(emailLogin, escenario);
     })    
 })
 

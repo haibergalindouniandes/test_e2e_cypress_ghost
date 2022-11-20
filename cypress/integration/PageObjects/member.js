@@ -1,6 +1,4 @@
-import Page from "./page";
 import { Utils } from '../../support/utils';
-const page = new Page();
 
 class Member {
 
@@ -11,11 +9,11 @@ class Member {
     }
 
     open() {
-        page.navigate('#/members');
+        Utils.navigate('#/members');        
     }
 
     goToNewMember(){
-        page.navigate('#/members/new');
+        Utils.navigate('#/members/new');        
     }
     
     setName(name){
@@ -47,11 +45,13 @@ class Member {
     }
 
     submitSettings(){
+        //cy.get('button[class="gh-btn gh-btn-icon icon-only gh-btn-action-icon open ember-view"]');
         cy.get('#ember29').first().click({ force: true });
     }
 
     submitDeleteMember(){
-        cy.get('li:nth-child(2) button:nth-child(1)').click({ force: true });
+        cy.get('ul[class="dropdown gh-member-actions-menu dropdown-menu dropdown-triangle-top-right closed fade-out closed ember-view"]').click({ force: true });
+        //cy.get('li:nth-child(2) button:nth-child(1)').click({ force: true });
     }
 
     confirmDeleteMember(){
@@ -59,58 +59,80 @@ class Member {
     }
 
 
-    createMember(name,email,label,notes) {
+    createMember(name, email, label, notes, emailLogin, escenario) {
         this.open();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
         this.goToNewMember();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.setName(name);
         this.setEmail(email);
         this.setLabel(label);
         this.setNotes(notes);
-        Utils.takeScreenshot(this.instance, this.constructor.name);
         Utils.delay(2000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.submmitMember();  
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-        Utils.delay(1000);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.open();    
         Utils.delay(2000);
-        cy.reload();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        cy.reload();        
     }
 
 
-    editMember(note) {
+    editMember(note, emailLogin, escenario) {
         this.open();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
         this.selectFirstMember();
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
         this.setNotes(note);
-        Utils.takeScreenshot(this.instance, this.constructor.name);
         Utils.delay(2000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.submmitMember();  
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-        Utils.delay(1000);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.open();    
         Utils.delay(2000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
         cy.reload();
     }
 
-    deleteMember() {
+    deleteMember(emailLogin, escenario) {
         this.open();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.selectFirstMember();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-        Utils.delay(500);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.submitSettings();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-        Utils.delay(500);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+                
         this.submitDeleteMember();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-        Utils.delay(500);        
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+                        
         this.confirmDeleteMember();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-        Utils.delay(2000);        
-        this.open();    
         Utils.delay(2000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+                
+        this.open();         
+        Utils.delay(2000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
         cy.reload();
     }
 }

@@ -1,29 +1,31 @@
 //Imports libreries
 const faker = require("faker");
 import { Utils } from '../../support/utils';
-import Login from "../PageObjects/login";
+import Login from '../PageObjects/login';
 import Staff from "../PageObjects/staff";
 //Modifiable Test Variables
 //Constant that allows defining the url of the web application to test
-const executeInstance = Utils.getRandomInt(0, 10000000);
-const emailLogin = Cypress.env('emailLogin') || "miso@miso.com";
-const passwordLogin = Cypress.env('passwordLogin') || "miso123456";
-const dashboardPage = Cypress.env('dashboardPage') || "http://localhost:3001/ghost/#/dashboard";
-const staffPage = Cypress.env('staffPage') || "http://localhost:3001/ghost/#/settings/staff";
+
+const url = Utils.getUrl();
+const dashboardPage = Utils.getDashboardPage();
+const staffPage = Utils.getStaffPage();
+const emailLogin = Utils.getEmail();
+const passwordLogin = Utils.getPassword(); 
+const escenario = "xx_create_account";
+
 
 //Test setup
 describe('Create  Account', () => {
-    it(`Create_Delete Account and send invitation people [ID_${executeInstance}]`, () => {
+    it(escenario, () => {
         const login = new Login();
         const staff = new Staff();
-        const emailAdrress = faker.internet.email();
-        login.setInstance(executeInstance);
-        login.login(emailLogin, passwordLogin);
+        const emailAdrress = faker.internet.email();        
+        Utils.pruebaID_reset();
+        login.login(url, emailLogin, passwordLogin, escenario);         
         cy.url().should('be.equal', dashboardPage);
-        staff.setInstance(executeInstance);
-        staff.sendInvitation(emailAdrress);
+        staff.sendInvitation(emailAdrress, emailLogin, escenario);
         cy.url().should('be.equal', staffPage);
         staff.listPeopleInvited().should('contain', emailAdrress);
-        staff.revokeInvitation(emailAdrress);
+        staff.revokeInvitation(emailAdrress, emailLogin, escenario);
     });
 })

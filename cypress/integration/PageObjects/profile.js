@@ -1,6 +1,4 @@
-import Page from "./page";
 import { Utils } from '../../support/utils';
-const page = new Page();
 export default class Profile {
 
     instance = 0;
@@ -46,24 +44,31 @@ export default class Profile {
     }
 
     open() {
-        page.navigate('#/settings/staff/');
+        Utils.navigate('#/settings/staff/');        
     }
 
-    editProfile(fullName, slug, location, website, bio) {
+    editProfile(fullName, slug, location, website, bio, emailLogin, escenario) {
         this.submitAvatar().click({ force: true });
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
         this.submitProfile().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.fullName().clear().type(fullName);
         this.slug().clear().type(slug);
         this.location().clear().type(location);
         this.website().clear().type(website);
         this.bio().clear().type(bio);
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.bottonSave().click({ force: true });
         Utils.delay(1000);
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
         cy.reload()
+        Utils.delay(1000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     }
 }

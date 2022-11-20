@@ -1,37 +1,32 @@
-import Page from "./page";
 import { Utils } from '../../support/utils';
-const page = new Page();
+
 class Login {
 
-    instance = 0;
-
-    setInstance(instance) {
-        this.instance = instance;
-    }
-
     email(email) {
-        cy.get('#ember6').clear().type(email);
+        cy.get('input[name="identification"]').clear().type(email);
     }
 
     password(password) {
-        cy.get('#ember8').clear().type(password);
+        cy.get('input[name="password"]').clear().type(password);
     }
 
     submit() {
         cy.get('button[type="submit"]').click({ force: true });
     }
 
-    open() {
-        page.navigate('#/signin');
+    open(url) {
+        cy.visit(url);
+        Utils.delay();
+    
     }
 
-    login(email, password) {
-        this.open();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+    login(url, email, password, escenario) {        
+        this.open(url);        
         this.email(email);
         this.password(password);
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(email, escenario, "Paso_"+Utils.pruebaID());
         this.submit();
-    }
+        Utils.delay();
+    }    
 }
 export default Login;

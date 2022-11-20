@@ -1,28 +1,29 @@
 //Imports libreries
 const faker = require("faker");
 import { Utils } from '../../support/utils';
-import Login from "../PageObjects/login";
+import Login from '../PageObjects/login';
 import Member from "../PageObjects/member";
 
 //Modifiable Test Variables
 //Constant that allows defining the url of the web application to test
-const executeInstance = Utils.getRandomInt(0, 10000000);
-const emailLogin = Cypress.env('emailLogin') || "miso@miso.com";
-const passwordLogin = Cypress.env('passwordLogin') || "miso123456";
-const dashboardPage = Cypress.env('dashboardPage') || "http://localhost:3001/ghost/#/dashboard";
-const memberPage = Cypress.env('memberPage') || "http://localhost:3001/ghost/#/members";
+
+const url = Utils.getUrl();
+const dashboardPage = Utils.getDashboardPage();
+const memberPage = Utils.getMemberPage();
+const emailLogin = Utils.getEmail();
+const passwordLogin = Utils.getPassword(); 
+const escenario = "xx_delete_member";
 
 //Test setup
 describe('Delete  Member', () => {
-    it(`Delete Member [ID_${executeInstance}]`, () => {
+    it(escenario, () => {
         const login = new Login();
         const member = new Member();
-        const note = faker.lorem.text();
-        login.setInstance(executeInstance);
-        login.login(emailLogin, passwordLogin);
+        //const note = faker.lorem.text();
+        Utils.pruebaID_reset();
+        login.login(url, emailLogin, passwordLogin, escenario);
         cy.url().should('be.equal', dashboardPage);
-        member.setInstance(executeInstance);
-        member.deleteMember();        
+        member.deleteMember(emailLogin, escenario);        
         cy.url().should('be.equal', memberPage);      
     });
 })

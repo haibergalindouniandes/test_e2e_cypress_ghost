@@ -30,7 +30,8 @@ class Staff {
     }
 
     open() {
-        page.navigate('#/settings/staff');
+        Utils.navigate('#/settings/staff');
+        //page.navigate('#/settings/staff');
     }
 
     listPeopleInvited() {
@@ -58,21 +59,31 @@ class Staff {
         cy.get('button[class="gh-btn gh-btn-icon button-change-password gh-btn-red ember-view"]').click({ force: true });
     }
     
-    sendInvitation(email) {
+    sendInvitation(email, emailLogin, escenario) {
         this.open();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
         this.submitSettingsButton();
-        this.email(email);
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
+
+        this.email(email);  
+        Utils.delay();      
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
         this.radios().last().click({ force: true });
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
         this.submitSendButton();
         Utils.delay(2000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
         cy.reload();
     }
 
-    revokeInvitation(email) {      
-        Utils.takeScreenshot(this.instance, this.constructor.name);        
+    revokeInvitation(email, emailLogin, escenario) {      
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
         Utils.delay(2000);
         //cy.get('h3.apps-card-app-title').should('to.contain', email).focus();
         cy.get('h3.apps-card-app-title').each(($el, index, $list) => {
@@ -85,26 +96,30 @@ class Staff {
             } else {
               // do something else
             }
-          });
-        
-        Utils.delay(2000);       
+          });        
+        Utils.delay(2000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());       
         cy.reload();
     }
 
-    changePassword(oldPass,newPass) {
+    changePassword(oldPass,newPass, emailLogin, escenario) {
         this.open();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.selectfisrtActiveUser();        
-        Utils.takeScreenshot(this.instance, this.constructor.name);
         Utils.delay(2000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.setOldPasword(oldPass);
         this.setNewPasword(newPass);
         this.setConfirmPasword(newPass);
-        Utils.takeScreenshot(this.instance, this.constructor.name);
         Utils.delay(7000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.submitChangePassButton();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
         Utils.delay(2000);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
         this.open();
         cy.reload();
     }

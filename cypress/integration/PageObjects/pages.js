@@ -1,6 +1,4 @@
-import Page from "./page";
 import { Utils } from '../../support/utils';
-const page = new Page();
 class Pages {
 
     instance = 0;
@@ -10,7 +8,7 @@ class Pages {
     }
 
     open() {
-        page.navigate('#/pages');
+        Utils.navigate('#/pages');        
     }
 
     listPages() {
@@ -37,11 +35,11 @@ class Pages {
         return cy.get('button.gh-btn.gh-btn-red.gh-btn-icon.ember-view');
     }
 
-    getListPages() {
+    getListPages(emailLogin, escenario) {
         this.submitLinkPages().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-        return this.listPages();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        //return this.listPages();
     }
 
     buttonNewPage() {
@@ -83,56 +81,77 @@ class Pages {
     }
 
 
-    deleteFirstPage() {
-        this.getListPages();
+    deleteFirstPage(emailLogin, escenario) {
+        this.getListPages(emailLogin, escenario);
+        
         this.firstPost().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
         this.buttonSettingsPage().click({ force: true });
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-        this.buttonDeletePage().click({ force: true });
-        Utils.takeScreenshot(this.instance, this.constructor.name);
         Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+
+        this.buttonDeletePage().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.confirmButtonDeletePage().click({ force: true });
         Utils.delay(2000);
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
     }
 
-    createPage() {
+    createPage(emailLogin, escenario) {
         this.submitLinkPages().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.buttonNewPage().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.titlePage().clear().type("holaMundo");        
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.buttonPublish().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.buttonFinalReview().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.buttonPublishNow().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+    
+        this.submitLinkPages().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
     }
 
-    modifyPage() {
+    modifyPage(emailLogin, escenario) {
         this.submitLinkPages().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.buttonEdit().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.titlePage().clear().type("holaMundo Modificado");        
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
         this.buttonUpdate().click({ force: true });
         Utils.delay();
-        Utils.takeScreenshot(this.instance, this.constructor.name);
-        this.submitLinkPages().click({ force: true });  
-
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
+        this.submitLinkPages().click({ force: true });
+        Utils.delay();
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());  
     }
 
 }
