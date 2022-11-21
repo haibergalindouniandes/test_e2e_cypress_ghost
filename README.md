@@ -25,28 +25,28 @@ El proyecto cuenta con una suite de pruebas principal que tiene 20 escenarios de
 
 ### Escenarios 
 
-| Identificador | Escenario | Descripción |
-| ----- | ----------- | ----------- |
-| PA_01 |  Crear nueva cuenta  |  Escenario que realiza la creación de una cuenta nueva con información aleatoria.  |
-| PA_02   |  Crear nuevo miembro  |   Escenario que realiza la creación de un miembro con información aleatoria.   |
-| PA_03    |  Editar miembro|   Escenario que realiza la modificación del primer miembro que se encuentre en el listado de miembros con información aleatoria.    |
-| PA_04 |  Eliminar miembro|  Escenario que realiza el borrado del primer miembro que se encuentre en el listado de miembros.   |
-| PA_05 |  Cambiar password|  Escenario que realiza el cambio de password del usuario administrador de la aplicación.|
-| PA_06 |  Iniciar sesión |  Escenario que realiza el login a la aplicación.   |
-| PA_07 |  Crear nuevo post   |   Escenario que realiza la creación de un nuevo post con información aleatoria y lo deja en estado borrador.   |
-| PA_08 |  Publicar post |   Escenario que realiza la publicación de un post que se encuentre en estado borrador.     |
-| PA_09 |  Modificar post |  Escenario que realiza la modificación de un post existente con información aleatoria.   |
-| PA_10 |  Búsqueda  de post|  Escenario que realiza la búsqueda de un post.      |
-| PA_11 |  Eliminar post|  Escenario que realiza el borrado del primer post que se encuentre en el listado de posts.    |
-| PA_12 |  Listar todos los posts|  Escenario que lista todos los posts que se encuentren creados.       |
-| PA_13 |  Crear nuevo tag | Escenario que realiza la creación de un nuevo tag con información aleatoria.   |
-| PA_14 |  Crear nueva página |   Escenario que realiza la creación de una página con información aleatoria.   |
-| PA_15 |  Modificar página |  Escenario que realiza la modificación de una página existente con información aleatoria.     |
-| PA_16 |  Listar todas las páginas |  Escenario que lista todas los paginas que se encuentren creados.       |
-| PA_17 |  Eliminar primera página|   Escenario que realiza el borrado de la primera página que se encuentre en el listado de páginas.      |
-| PA_18 |  Invitar gente con un correo aleatorio|   Escenario que realiza el envió de la invitación a unirse a un correo aleatorio. |
-| PA_19 |  Editar información de mi perfil|  Escenario que realiza la modificación de información del perfil con que se ingrese. Esta información se genera de forma aleatoria.   |
-| PA_20 |  Editar Twitter card|  Escenario que realiza la modificación de información del Twittercard de la aplicación.       |
+| **ID** | **Escenario** | **Descripción** |
+| --- | --- | --- |
+| 01 | Iniciar sesión | Escenario que realiza el login a la aplicación. |
+| 02 | Crear nuevo miembro | Escenario que realiza la creación de un miembro con información aleatoria. |
+| 03 | Crear nueva página | Escenario que realiza la creación de una página con información aleatoria. |
+| 04 | Crear nuevo post | Escenario que realiza la creación de un nuevo post con información aleatoria y lo deja en estado borrador. |
+| 05 | Crear nuevo tag | Escenario que realiza la creación de un nuevo tag con información aleatoria. |
+| 06 | Crear nueva cuenta | Escenario que realiza la creación de una cuenta nueva con información aleatoria. |
+| 07 | Editar miembro | Escenario que realiza la modificación del primer miembro que se encuentre en el listado de miembros con información aleatoria. |
+| 08 | Editar Twitter card | Escenario que realiza la modificación de información del Twittercard de la aplicación. |
+| 09 | Editar información de mi perfil | Escenario que realiza la modificación de información del perfil con que se ingrese. Esta información se genera de forma aleatoria. |
+| 10 | Publicar post | Escenario que realiza la publicación de un post que se encuentre en estado borrador. |
+| 11 | Invitar gente con un correo aleatorio | Escenario que realiza el envió de la invitación a unirse a un correo aleatorio. |
+| 12 | Listar todos los posts | Escenario que lista todos los posts que se encuentren creados. |
+| 13 | Modificar página | Escenario que realiza la modificación de una página existente con información aleatoria. |
+| 14 | Modificar post | Escenario que realiza la modificación de un post existente con información aleatoria. |
+| 15 | Listar todas las páginas | Escenario que lista todas los paginas que se encuentren creados. |
+| 16 | Búsqueda de post | Escenario que realiza la búsqueda de un post. |
+| 17 | Eliminar miembro | Escenario que realiza el borrado del primer miembro que se encuentre en el listado de miembros. |
+| 18 | Eliminar primera página | Escenario que realiza el borrado de la primera página que se encuentre en el listado de páginas. |
+| 19 | Eliminar post | Escenario que realiza el borrado del primer post que se encuentre en el listado de posts. |
+| 20 | Cambiar password | Escenario que realiza el cambio de password del usuario administrador de la aplicación. |
 
 ## Estructura de carpetas
 La estructura interna de la aplicación a nivel de carpetas y su finalidad es la siguiente:
