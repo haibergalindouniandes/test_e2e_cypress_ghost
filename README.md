@@ -76,9 +76,9 @@ Para utilizar hacer uso del test de pruebas de la aplicación Ghost, se deben se
 
 
 ## Ejecución
-- Una vez realizada la configuración del archivo `utils.js` para lanzar la ejecucón de las pruebas, a través de la terminal ejecute el siguiente comando: `./node_modules/.bin/cypress run. 
+- Una vez realizada la configuración del archivo `utils.js` para lanzar la ejecucón de las pruebas, a través de la terminal ejecute el siguiente comando: `./node_modules/.bin/cypress run`. 
 - Si requiere lanzar la ejecucion de una prueba en particular ejecute el siguiente comando:
-`./node_modules/.bin/cypress run --spec "ruta<step>", por ejemplo: ./node_modules/.bin/cypress run --spec "cypress/integration/step-definitions/13_modifyPage.spec.js"
+`./node_modules/.bin/cypress run --spec "ruta<step>"`, por ejemplo: ./node_modules/.bin/cypress run --spec "cypress/integration/step-definitions/13_modifyPage.spec.js"
 
 ## Resultados
 Cuando finalice la ejecución de la prueba, se generará en la carpeta `videos` un video de la ejecución en un navegador y adicional a esto se genera en la carpeta `screenshots` los pantallazos tomados durante la ejecución de la prueba.
