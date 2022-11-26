@@ -12,7 +12,8 @@ npm-debug.log
 yarn-error.log
 
 # Screenshots
-/cypress/screenshots
+/cypress/screenshots/*
+/cypress/fixtures/*
 
 # results
 /results/*
