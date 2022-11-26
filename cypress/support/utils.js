@@ -8,6 +8,7 @@ const memberPage = Cypress.env("memberPage") || "http://localhost:2369/ghost/#/m
 const emailLogin = Cypress.env('emailLogin') || "jm.carrillo@uniandes.edu.co";
 const passwordLogin = Cypress.env('passwordLogin') || "Jorge.2020";
 const newPassword = Cypress.env('newPassword') || "Jorge.2020";
+const iterations = 5 ;
 
 let counter = 0;
 export class Utils {
@@ -90,6 +91,11 @@ export class Utils {
     //Function to get memberPage
     static getMemberPage() {
         return memberPage;        
+    };
+
+    //Function to get number of iterations
+    static getIterations() {
+        return iterations;        
     };
 
 }

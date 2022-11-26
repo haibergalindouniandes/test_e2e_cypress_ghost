@@ -17,19 +17,19 @@ class Member {
     }
     
     setName(name){
-        cy.get('#member-name').first().type(name);
+        cy.get('#member-name').clear().first().type(name);
     }
 
     setEmail(email) {
-        cy.get('#member-email').first().type(email);
+        cy.get('#member-email').clear().first().type(email);
     }
 
     setLabel(label){
-        cy.get('input[class="ember-power-select-trigger-multiple-input"]').first().type(label);
+        cy.get('input[class="ember-power-select-trigger-multiple-input"]').clear().first().type(label);
     }
 
     setNotes(notes){
-        cy.get('#member-note').first().type(notes);
+        cy.get('#member-note').clear().first().type(notes);
     }
 
     submmitMember(){
@@ -55,6 +55,11 @@ class Member {
     confirmDeleteMember(){
         cy.get('button[class="gh-btn gh-btn-red gh-btn-icon ember-view"]').click({ force: true });
     }
+
+    leaveButton(){
+        cy.get('button[class="gh-btn gh-btn-red"]').click({ force: true });
+    }
+
 
 
     createMember(name, email, label, notes, emailLogin, escenario) {
@@ -83,7 +88,7 @@ class Member {
     }
 
 
-    editMember(note, emailLogin, escenario) {
+    editMember(name, email, label, notes, emailLogin, escenario) {
         this.open();
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
@@ -92,7 +97,10 @@ class Member {
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
 
-        this.setNotes(note);
+        this.setName(name);
+        this.setEmail(email);
+        this.setLabel(label);
+        this.setNotes(notes);
         Utils.delay(2000);
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
         
@@ -102,7 +110,13 @@ class Member {
         
         this.open();    
         Utils.delay(2000);
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        
+        if(escenario==='07_edit_member/faker/Invalid_email') {
+            this.leaveButton();
+            Utils.delay();
+            Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        }
     }
 
     deleteMember(emailLogin, escenario) {
