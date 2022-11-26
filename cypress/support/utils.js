@@ -9,6 +9,7 @@ const passwordLogin = Cypress.env('passwordLogin') || "Zl@ifer619";
 const newPassword = Cypress.env('newPassword') || "Zl@ifer619";
 const urlApiMockarooAccounts = 'https://my.api.mockaroo.com/pas/random/data/member.json';
 const apikeyMockarooAccounts = 'ef45f480';
+const iterations = 5;
 
 let counter = 0;
 export class Utils {
@@ -91,6 +92,11 @@ export class Utils {
     //Function to get memberPage
     static getMemberPage() {
         return memberPage;
+    };
+
+    //Function to get number of iterations
+    static getIterations() {
+        return iterations;        
     };
 
     //Function to get endpoint to mockaroo of accounts
