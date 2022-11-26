@@ -1,15 +1,15 @@
 const delay = Cypress.env('delay') || 1000;
-const siteUrl = Cypress.config('baseUrl') || "http://localhost:2368/ghost/";
-const url = Cypress.env('url') || "http://localhost:2368/ghost/#/signin";
-const dashboardPage = Cypress.env('dashboardPage') || "http://localhost:2368/ghost/#/dashboard";
-const staffPage = Cypress.env('staffPage') || "http://localhost:2368/ghost/#/settings/staff";
-const memberPage = Cypress.env("memberPage") || "http://localhost:2368/ghost/#/members";
-const emailLogin = Cypress.env('emailLogin') || "h.galindos@uniandes.edu.co";
-const passwordLogin = Cypress.env('passwordLogin') || "Zl@ifer619";
-const newPassword = Cypress.env('newPassword') || "Zl@ifer619";
+const siteUrl = Cypress.config('baseUrl') || "http://localhost:2369/ghost/";
+const url = Cypress.env('url') || "http://localhost:2369/ghost/#/signin";
+const dashboardPage = Cypress.env('dashboardPage') || "http://localhost:2369/ghost/#/dashboard";
+const staffPage = Cypress.env('staffPage') || "http://localhost:2369/ghost/#/settings/staff";
+const memberPage = Cypress.env("memberPage") || "http://localhost:2369/ghost/#/members";
+const emailLogin = Cypress.env('emailLogin') || "jm.carrillo@uniandes.edu.co";
+const passwordLogin = Cypress.env('passwordLogin') || "Jorge.2020";
+const newPassword = Cypress.env('newPassword') || "Jorge.2020";
 const urlApiMockarooAccounts = 'https://my.api.mockaroo.com/pas/random/data/member.json';
 const apikeyMockarooAccounts = 'ef45f480';
-const iterations = 5;
+const iterations = 2;
 
 let counter = 0;
 export class Utils {

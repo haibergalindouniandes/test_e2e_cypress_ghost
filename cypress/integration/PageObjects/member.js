@@ -28,11 +28,17 @@ class Member {
         if (String(name).length > 0) {
             cy.get('#member-name').clear().first().type(name);
         }
+        else {
+            cy.get('#member-name').clear();
+        }
     }
 
     setEmail(email) {
         if (String(email).length > 0) {
             cy.get('#member-email').clear().first().type(email);
+        }
+        else {
+            cy.get('#member-email').clear()
         }
     }
 
@@ -122,13 +128,13 @@ class Member {
 
         this.submmitMember();
         Utils.delay();
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_" + Utils.pruebaID());
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_" + Utils.pruebaID());        
 
         this.open();
         Utils.delay(2000);
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
         
-        if(escenario==='07_edit_member/faker/Invalid_email') {
+        if(escenario==='07_edit_member/Invalid_email' || escenario==='07_edit_member/Null_email' || escenario==='07_edit_member/Note_greater_500_characters') {
             this.leaveButton();
             Utils.delay();
             Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
