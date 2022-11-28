@@ -9,8 +9,10 @@ const passwordLogin = Cypress.env('passwordLogin') || "Jorge.2020";
 const newPassword = Cypress.env('newPassword') || "Jorge.2020";
 const urlApiMockarooAccounts = 'https://my.api.mockaroo.com/pas/random/data/member.json';
 const urlApiMockarooPost = "https://my.api.mockaroo.com/post.json";
+const urlApiMockarooPage = "https://my.api.mockaroo.com/schemaCreatePage.json";
 const apikeyMockarooAccounts = 'ef45f480';
 const apikeyMockarooPost = "c96766b0";
+const apikeyMockarooPage = "1810ad40";
 const iterations = 1;
 
 let counter = 0;
@@ -117,6 +119,16 @@ export class Utils {
   //Function to get apikey to mockaroo of accounts
   static getApikeyMockarooPost() {
     return apikeyMockarooPost;
+  }
+
+  //Function to get endpoint to mockaroo of pages
+  static getEndPointMockarooPages() {
+    return urlApiMockarooPage;
+  }
+
+  //Function to get apikey to mockaroo of pages
+  static getApikeyMockarooPages() {
+    return apikeyMockarooPage;
   }
 
   //Function to allows slice a string
