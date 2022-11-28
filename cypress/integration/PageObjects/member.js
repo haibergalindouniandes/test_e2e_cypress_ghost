@@ -12,6 +12,11 @@ class Member {
         Utils.navigate('#/members');
     }
 
+    signout() {
+        Utils.navigate('#/signout/');
+        Utils.delay();
+    }
+
     goToNewMember() {
         Utils.navigate('#/members/new');
     }
@@ -21,7 +26,27 @@ class Member {
     }
 
     getLeaveBtn() {
-        return cy.get("button[class='gh-btn gh-btn-red'] span");
+        return cy.get('span').contains('Leave').first();
+    }
+
+    getStayBtn() {
+        return cy.get('span').contains('Stay').first();
+    }
+
+    getDivsResponseError() {
+        return cy.get("p[class='response']");
+    }
+
+    getInputLabel() {
+        return cy.get('input[class="ember-power-select-trigger-multiple-input"]').first();
+    }
+
+    getInputNotes() {
+        return cy.get('#member-note');
+    }
+
+    getAddListLabel() {
+        return cy.get('ul.ember-power-select-options > li');
     }
 
     setName(name) {
@@ -89,7 +114,9 @@ class Member {
         this.setName(name);
         this.setEmail(email);
         this.setLabel(label);
-        this.setNotes(notes);
+        this.getAddListLabel().first().click();
+        this.getName().click()
+        this.getInputNotes().type(notes);
         this.getName().click()
         Utils.delay(2000);
         Utils.takeScreenshot(emailLogin, escenario, "Paso_" + Utils.pruebaID());
@@ -126,12 +153,12 @@ class Member {
 
         this.open();
         Utils.delay(2000);
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
-        
-        if(escenario==='07_edit_member/faker/Invalid_email') {
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_" + Utils.pruebaID());
+
+        if (escenario === '07_edit_member/faker/Invalid_email') {
             this.leaveButton();
             Utils.delay();
-            Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+            Utils.takeScreenshot(emailLogin, escenario, "Paso_" + Utils.pruebaID());
         }
     }
 

@@ -10,10 +10,9 @@ const memberPage =
 const emailLogin = Cypress.env("emailLogin") || "miso@miso.com";
 const passwordLogin = Cypress.env("passwordLogin") || "miso123456";
 const newPassword = Cypress.env("newPassword") || "miso123456";
-const urlApiMockarooAccounts =
-  "https://my.api.mockaroo.com/pas/random/data/member.json";
+const urlApiMockarooAccounts = 'https://my.api.mockaroo.com/pas/random/data/member.json';
 const urlApiMockarooPost = "https://my.api.mockaroo.com/post.json";
-const apikeyMockarooAccounts = "ef45f480";
+const apikeyMockarooAccounts = 'ef45f480';
 const apikeyMockarooPost = "c96766b0";
 const iterations = 1;
 
@@ -133,32 +132,25 @@ export class Utils {
     return value.replaceAll(" ", "");
   }
 
-  //Function to allows to complete a string
-  static completeString(
-    valueToComplete,
-    referenceValue,
-    countCharacters,
-    type
-  ) {
-    let stringCompleted = "";
+  //Function to allows to complete a string 
+  static completeString(valueToComplete, referenceValue, countCharacters, type) {
+    let stringCompleted = '';
     let countRefCharacters = valueToComplete.length;
-    cy.log(countRefCharacters);
     let refValueWithoutSpaces = this.removeSpacesString(referenceValue);
-    cy.log(refValueWithoutSpaces);
     let countDifferences = countCharacters - countRefCharacters;
-    cy.log(countDifferences);
-    let stringSliced = this.sliceString(
-      refValueWithoutSpaces,
-      countDifferences
-    );
-    cy.log(stringSliced);
-    if (type === "start") {
+    let stringSliced = this.sliceString(refValueWithoutSpaces, countDifferences);
+    if (type === 'start') {
       stringCompleted = stringSliced.concat(valueToComplete);
     } else {
       stringCompleted = valueToComplete.concat(stringSliced);
     }
-    cy.log(stringCompleted);
-
     return stringCompleted;
   }
+
+  //Function to allows split a string 
+  static splitString(value, delimiter, valToReturn) {
+    let stringSplited = value.split(delimiter);
+    return stringSplited[valToReturn];
+  }
+
 }
