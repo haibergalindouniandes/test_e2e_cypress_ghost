@@ -78,7 +78,7 @@ Para utilizar hacer uso del test de pruebas de la aplicación Ghost, se deben se
 - Una vez realizada la configuración del archivo `utils.js` se debe en primera instancia generar los Datapools a priori `Accounts.json`, `schemaCreatePage.json` y `Pages.json`, para lo cual a través de la terminal y estando en la raíz del proyecto, debe ejecutar el siguiente comando `node index.js`, esto generara los archivos en la carpeta `./cypress/fixtures/`. 
 - Ya teniendo los archivos creados con datos aleatorios en la terminal ejecute el siguiente comando: `./node_modules/.bin/cypress run`, que lanzara la ejecucion de las diferentes pruebas de extremo a extremo que se encuentren en la carpeta `./cypress/integration/step-definitions`.
 - Si requiere lanzar la ejecución de una prueba en particular ejecute el siguiente comando:
-`./node_modules/.bin/cypress run --spec "ruta<step>"`, por ejemplo: ./node_modules/.bin/cypress run --spec "cypress/integration/step-definitions/13_modifyPage.spec.js"
+`./node_modules/.bin/cypress run --spec "ruta<step>"`, por ejemplo: ./node_modules/.bin/cypress run --spec "cypress/integration/step-definitions/01_invitePeople.spec.js"
 
 ## Resultados
 Cuando finalice la ejecución de la prueba, se generará en la carpeta `videos` un video de la ejecución de las diferentes pruebas ejecutadas y adicional a esto se genera en la carpeta `./cypress/screenshots` los pantallazos tomados durante este proceso de pruebas automatizadas.
