@@ -72,7 +72,7 @@ Para utilizar hacer uso del test de pruebas de la aplicación Ghost, se deben se
 ![configuracion](https://user-images.githubusercontent.com/111403006/202923217-749b4cb7-9a46-4934-babe-0a0621aa0309.png)
 <br>* Modifique los puertos en los parámetros **siteUrl**, **Url**, **dashboardPage**, **staffPage** y **memberPage**, de acuerdo al puerto que Ghost está usando en su máquina.
 <br>* Modifique los parámetros **emaiLogin**, **passwordLogin** de acuerdo a los valores que estableció para crear su cuenta de Ghost.
-<br>* Modifique el parámetro **newwordLogin** con una contraseña valida que cumpla los requerimientos de Ghost, para que la contraseña actual pueda ser actualizada por la nueva contraseña. Para este ejercicio puede establecer el parámetro **newwordLogin** igual que su actual contraseña (**passwordLogin**) 
+<br>* Modifique el parámetro **newPassword** con una contraseña valida que cumpla los requerimientos de Ghost, para que la contraseña actual pueda ser actualizada por la nueva contraseña. Para este ejercicio puede establecer el parámetro **newPassword** igual que su actual contraseña (**passwordLogin**) 
 
 ## Ejecución
 - Una vez realizada la configuración del archivo `utils.js` se debe en primera instancia generar los Datapools a priori `Accounts.json`, `schemaCreatePage.json` y `Pages.json`, para lo cual a través de la terminal y estando en la raíz del proyecto, debe ejecutar el siguiente comando `node index.js`, esto generara los archivos en la carpeta `./cypress/fixtures/`. 
