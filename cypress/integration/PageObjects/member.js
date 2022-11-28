@@ -82,6 +82,23 @@ class Member {
         cy.get('button[class="gh-btn gh-btn-red"]').click({ force: true });
     }
 
+    updatedMemberConfirmationFail() {
+        return cy.get('button[class="gh-btn gh-btn-primary gh-btn-icon gh-btn-red ember-view"]');
+    }
+
+    updatedMemberConfirmationOk() {
+        return cy.get('button[class="gh-btn gh-btn-primary gh-btn-icon ember-view"]');
+    }
+
+    signout() {
+        Utils.navigate('#/signout/');
+        Utils.delay();
+    }
+
+    getDivsResponseError() {
+        return cy.get("div[class='form-group mb0 gh-member-note error ember-view'] p[class='response']");
+    }
+
 
     createMember(name, email, label, notes, emailLogin, escenario) {
         this.open();
@@ -128,16 +145,27 @@ class Member {
 
         this.submmitMember();
         Utils.delay();
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_" + Utils.pruebaID());        
-
-        this.open();
-        Utils.delay(2000);
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        Utils.takeScreenshot(emailLogin, escenario, "Paso_" + Utils.pruebaID());  
         
         if(escenario==='07_edit_member/Invalid_email' || escenario==='07_edit_member/Null_email' || escenario==='07_edit_member/Note_greater_500_characters') {
-            this.leaveButton();
+            this.updatedMemberConfirmationFail().each((element) => {                
+                let message = element.find('span')[0].innerHTML;
+                expect(message).contains("Retry");
+            })
+            this.open();
             Utils.delay();
+            this.leaveButton();            
+            Utils.delay(2000);
             Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        }
+        else{
+            this.updatedMemberConfirmationOk().each((element) => {                
+                let message = element.find('span')[0].innerHTML;
+                expect(message).contains("Save");
+            })
+            this.open();
+            Utils.delay(2000);
+            Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());            
         }
     }
 

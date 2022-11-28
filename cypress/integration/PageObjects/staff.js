@@ -44,17 +44,44 @@ class Staff {
     }
 
     setNewPasword(newPass) {
-        cy.get('#user-password-new').first().type(newPass);
+        if (String(newPass).length > 0) {
+            cy.get('#user-password-new').clear().first().type(newPass);
+        }
+        else {
+            cy.get('#user-password-new').clear()
+        }        
     }
 
     setConfirmPasword(newPass) {
-        cy.get('#user-new-password-verification').first().type(newPass);
+        if (String(newPass).length > 0) {
+            cy.get('#user-new-password-verification').clear().first().type(newPass);
+        }
+        else {
+            cy.get('#user-new-password-verification').clear()
+        }        
     }
 
     submitChangePassButton() {
         cy.get('button[class="gh-btn gh-btn-icon button-change-password gh-btn-red ember-view"]').click({ force: true });
     }
+
+    confirmationPasswordUpdated() {
+        return cy.get('div[class="gh-notification-content"]')
+    }
     
+    wrongOldPassword() {
+        return cy.get('article[class="gh-alert gh-alert-red"]')
+    }
+
+    nullNewPassword() {
+        return cy.get('div[class="form-group error ember-view"]')
+    }
+
+    wrongVerificationPassword() {
+        return cy.get('div[class="form-group error ember-view"]')
+    }
+
+
     sendInvitation(email, emailLogin, escenario) {
         this.open();
         Utils.delay();
@@ -100,7 +127,7 @@ class Staff {
         cy.reload();
     }
 
-    changePassword(oldPass,newPass, emailLogin, escenario) {
+    changePassword(oldPass, newPass, verificationPassword, emailLogin, escenario) {
         this.open();
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
@@ -111,14 +138,50 @@ class Staff {
         
         this.setOldPasword(oldPass);
         this.setNewPasword(newPass);
-        this.setConfirmPasword(newPass);
-        Utils.delay(7000);
+        this.setConfirmPasword(verificationPassword);
+        Utils.delay(2000);
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
         
         this.submitChangePassButton();
         Utils.delay(2000);
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
         
+        if(escenario==='20_change_password/Correct_oldPassword') {           
+            this.confirmationPasswordUpdated().each((element) => {                
+                let message = element.find('span[class="gh-notification-title"]')[0].innerHTML;
+                expect(message).equal("Password updated");
+            }) 
+            Utils.delay();
+            Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        }
+
+        else if(escenario==='20_change_password/Wrong_oldPassword') {           
+            this.wrongOldPassword().each((element) => {                
+                let message = element.find('div[class="gh-alert-content"]')[0].innerHTML;
+                expect(message).contains("Your password is incorrect. Your password is incorrect.");
+            }) 
+            Utils.delay();
+            Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        }
+
+        else if(escenario==='20_change_password/Null_newPassword') {           
+            this.nullNewPassword().each((element) => {                
+                let message = element.find('p[class="response"]')[0].innerHTML;
+                expect(message).contains("Sorry, passwords can't be blank");
+            }) 
+            Utils.delay();
+            Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        }
+
+        else if(escenario==='20_change_password/Wrong_VerificationPassword') {           
+            this.wrongVerificationPassword().each((element) => {                
+                let message = element.find('p[class="response"]')[0].innerHTML;
+                expect(message).contains("Your new passwords do not match");
+            }) 
+            Utils.delay();
+            Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        }
+
         this.open();
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
