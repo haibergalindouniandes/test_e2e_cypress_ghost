@@ -38,7 +38,7 @@ El proyecto cuenta con una suite de pruebas principal que tiene 8 escenarios de 
 | 08 | Modificar página | Escenario que realiza la modificación de una página existente con información aleatoria. |
 
 ### Estrategias de generación de datos
-- **Pool de datos a-priori:** el proyecto cuenta con un archivo llamado `index.js` que le permitirá generar los archivos `Accounts.json`, `Posts.json` y `Pages.json`, los cuales contienen datos aleatorios y que serán utilizados para la realización de las pruebas. Estos archivos seran geneados en la carpeta `./cypress/fixtures/`.
+- **Pool de datos a-priori:** el proyecto cuenta con un archivo llamado `index.js` que le permitirá generar los archivos `Accounts.json`, `schemaCreatePage.json` y `Pages.json`, los cuales contienen datos aleatorios y que serán utilizados para la realización de las pruebas. Estos archivos seran geneados en la carpeta `./cypress/fixtures/`.
 - **Pool de datos (pseudo) aleatorio dinámico:** para esta estrategia se hará uso del API de generación de datos aleatorios Mockaroo (https://mockaroo.com/), y se lanzará cada vez que se ejecute un escenario de prueba.
 - **Escenario aleatorio:** para la generación de datos online se hará uso de la librería Faker (https://fakerjs.dev/) que permitirá ir generando datos aleatorios a medida que sean solicitados.
 
@@ -74,7 +74,7 @@ Para utilizar hacer uso del test de pruebas de la aplicación Ghost, se deben se
 <br>* Modifique el parámetro **newwordLogin** con una contraseña valida que cumpla los requerimientos de Ghost, para que la contraseña actual pueda ser actualizada por la nueva contraseña. Para este ejercicio puede establecer el parámetro **newwordLogin** igual que su actual contraseña (**passwordLogin**) 
 
 ## Ejecución
-- Una vez realizada la configuración del archivo `utils.js` se debe en primera instancia generar los Datapools a priori `Accounts.json`, `Posts.json` y `Pages.json`, para lo cual a través de la terminal y estando en la raíz del proyecto, debe ejecutar el siguiente comando `node index.js`, esto generara los archivos en la carpeta `./cypress/fixtures/`. 
+- Una vez realizada la configuración del archivo `utils.js` se debe en primera instancia generar los Datapools a priori `Accounts.json`, `schemaCreatePage.json` y `Pages.json`, para lo cual a través de la terminal y estando en la raíz del proyecto, debe ejecutar el siguiente comando `node index.js`, esto generara los archivos en la carpeta `./cypress/fixtures/`. 
 - Ya teniendo los archivos creados con datos aleatorios en la terminal ejecute el siguiente comando: `./node_modules/.bin/cypress run`, que lanzara la ejecucion de las diferentes pruebas de extremo a extremo que se encuentren en la carpeta `./cypress/integration/step-definitions`.
 - Si requiere lanzar la ejecución de una prueba en particular ejecute el siguiente comando:
 `./node_modules/.bin/cypress run --spec "ruta<step>"`, por ejemplo: ./node_modules/.bin/cypress run --spec "cypress/integration/step-definitions/13_modifyPage.spec.js"
