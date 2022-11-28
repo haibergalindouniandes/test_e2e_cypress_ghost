@@ -7,11 +7,12 @@
 | Jorge Mario Carrillo Riveros | jm.carrillo@uniandes.edu.co |
 | Edgar Ariel Salamanca Camargo | ea.salamanca@uniandes.edu.co |
 
-# Pruebas Automatizadas De Extremo A Extremo Con Cypress - Aplicación Ghost (Version 5.22.10)
-Este proyecto permite realizar pruebas automatizadas de extremo a extremo de la aplicación Ghost, haciendo uso del API de Automatización [Cypress](https://www.cypress.io/). A continuación se explica el detalle: 
+# Pruebas Automatizadas E2E Implementando Estrategias De Generación Datos 
+## Aplicación Ghost (Version 5.22.10)
+Este proyecto permite realizar pruebas automatizadas de extremo a extremo de la aplicación Ghost, haciendo uso del API de Automatización Cypress (https://www.cypress.io/) y para la generación de datos se implementan las estrategias de Datapools a priori, Datapools dinámicos y generación online de datos.
 
 ## Escenarios de prueba 
-El proyecto cuenta con una suite de pruebas principal que tiene 20 escenarios de prueba automatizadas, los cuales se detallan a continuación:
+El proyecto cuenta con una suite de pruebas principal que tiene 8 escenarios de prueba automatizadas y cada uno cuenta con sus sub-escenarios de pruebas implementando las diferentes estrategias de generación de datos mencionadas anteriormente. A continuación, se detalla la información de las pruebas a realizar:
 
 ### Funcionalidades 
 
@@ -27,26 +28,25 @@ El proyecto cuenta con una suite de pruebas principal que tiene 20 escenarios de
 
 | **ID** | **Escenario** | **Descripción** |
 | --- | --- | --- |
-| 01 | Iniciar sesión | Escenario que realiza el login a la aplicación. |
+| 01 | Invitar personas| Escenario que realiza el envió de la invitación a unirse a un correo aleatorio.  |
 | 02 | Crear nuevo miembro | Escenario que realiza la creación de un miembro con información aleatoria. |
-| 03 | Crear nueva página | Escenario que realiza la creación de una página con información aleatoria. |
-| 04 | Crear nuevo post | Escenario que realiza la creación de un nuevo post con información aleatoria y lo deja en estado borrador. |
-| 05 | Crear nuevo tag | Escenario que realiza la creación de un nuevo tag con información aleatoria. |
-| 06 | Crear nueva cuenta | Escenario que realiza la creación de una cuenta nueva con información aleatoria. |
-| 07 | Editar miembro | Escenario que realiza la modificación del primer miembro que se encuentre en el listado de miembros con información aleatoria. |
-| 08 | Editar Twitter card | Escenario que realiza la modificación de información del Twittercard de la aplicación. |
-| 09 | Editar información de mi perfil | Escenario que realiza la modificación de información del perfil con que se ingrese. Esta información se genera de forma aleatoria. |
-| 10 | Publicar post | Escenario que realiza la publicación de un post que se encuentre en estado borrador. |
-| 11 | Invitar gente con un correo aleatorio | Escenario que realiza el envió de la invitación a unirse a un correo aleatorio. |
-| 12 | Listar todos los posts | Escenario que lista todos los posts que se encuentren creados. |
-| 13 | Modificar página | Escenario que realiza la modificación de una página existente con información aleatoria. |
-| 14 | Modificar post | Escenario que realiza la modificación de un post existente con información aleatoria. |
-| 15 | Listar todas las páginas | Escenario que lista todas los paginas que se encuentren creados. |
-| 16 | Búsqueda de post | Escenario que realiza la búsqueda de un post. |
-| 17 | Eliminar miembro | Escenario que realiza el borrado del primer miembro que se encuentre en el listado de miembros. |
-| 18 | Eliminar primera página | Escenario que realiza el borrado de la primera página que se encuentre en el listado de páginas. |
-| 19 | Eliminar post | Escenario que realiza el borrado del primer post que se encuentre en el listado de posts. |
-| 20 | Cambiar password | Escenario que realiza el cambio de password del usuario administrador de la aplicación. |
+| 03 | Editar miembro| Escenario que realiza la modificación del primer miembro que se encuentre en el listado de miembros con información aleatoria. |
+| 04 | Cambiar password | Escenario que realiza el cambio de password del usuario administrador de la aplicación. |
+| 05 | Crear Post | Escenario que realiza la creación de un nuevo post con información aleatoria y lo deja en estado borrador. |
+| 06 | Modificar post | Escenario que realiza la modificación de un post existente con información aleatoria. |
+| 07 | Crear página | Escenario que realiza la creación de una página con información aleatoria. |
+| 08 | Modificar página | Escenario que realiza la modificación de una página existente con información aleatoria. |
+
+### Estrategias de generación de datos
+- Generación de Datapools a priori: el proyecto cuenta con un archivo llamado `index.js` que le permitirá generar los archivos `Accounts.json`, `Posts.json` y `Pages.json` que serán utilizados para la realización de las pruebas.
+- Generación de Datapools dinámicos: para esta estrategia se hará uso del API de generación de datos aleatorios Mockaroo (https://mockaroo.com/), y se lanzará cada vez que se ejecute un escenario de prueba.
+- Generación de datos online: para la generación de datos online se hará uso de la librería Faker (https://fakerjs.dev/) que permitirá ir generando datos aleatorios a medida que sean solicitados.
+
+
+En el siguiente documento podrá encontrar la información más detallada acerca de las pruebas realizadas, su objetivo, resultado esperado y estrategia de generación de datos utilizada. 
+
+[EscenariosDePruebasAutomatizacionGhost.xlsx](https://github.com/haibergalindouniandes/test_e2e_cypress_ghost/files/10099991/EscenariosDePruebasAutomatizacionGhost.xlsx)
+
 
 ## Estructura de carpetas
 La estructura interna de la aplicación a nivel de carpetas y su finalidad es la siguiente:
@@ -66,44 +66,18 @@ La estructura interna de la aplicación a nivel de carpetas y su finalidad es la
 ## Instalación y configuración
 Para utilizar hacer uso del test de pruebas de la aplicación Ghost, se deben seguir los siguientes pasos:
 - Obtenga el código fuente del repositorio: haga clic en Descargar como Zip y descomprima la carpeta en su máquina o clone el repositorio en su ambiente local.
-- Instalar los módulos requeridos: Usando [Node Package Manager](https://www.npmjs.com/), run `npm install` en la carpeta raíz; esto instalara los módulos de Cypress CLI y otras dependencias necesarias para el correcto funcionamiento del proyecto, como lo es el módulo de [faker](https://www.npmjs.com/package/faker). En caso de que ya tenga instalado Cypress, es mejor evitar instalarlo nuevamente en esta carpeta; puede realizar la instalación de dependencias de forma independiente, para esto ejecuta los comandos: `npm install faker`.
+- Instalar los módulos requeridos: Usando Node Package Manager (https://www.npmjs.com/), run `npm install` en la carpeta raíz; esto instalara los módulos de Cypress CLI y otras dependencias necesarias para el correcto funcionamiento del proyecto, como lo es el módulo de faker (https://www.npmjs.com/package/faker) y node-fetch (https://www.npmjs.com/package/node-fetch). En caso de que ya tenga instalado Cypress, es mejor evitar instalarlo nuevamente en esta carpeta; puede realizar la instalación de dependencias de forma independiente, para esto ejecuta los comandos: `npm install faker`, `npm install node-fetch`.
 - Configure las propiedades de la aplicación: La carpeta support contiene el archivo `utils.js`, el cual brinda los siguientes parámetros que se pueden modificar: 
 ![configuracion](https://user-images.githubusercontent.com/111403006/202923217-749b4cb7-9a46-4934-babe-0a0621aa0309.png)
-<br>* Modifique los puertos en los parametros **siteUrl**, **Url**, **dashboardPage**, **staffPage** y **memberPage**, de acuerdo al puerto que Ghost esta usando en su maquina.
-<br>* Modifique los parametros **emaiLogin**, **passwordLogin** de acuerdo a los valores que establecio para crear su cuenta de Ghost.
-<br>* Modifique el parametro **newwordLogin** con una contrasena valida que cumpla los requirimientos de Ghost, para que la contrasena actual pueda ser actualizada por la nueva contrasena. Para este ejercicio puede establecer el parametro **newwordLogin** igual que su actual contrasena (**passwordLogin**) 
-
-
+<br>* Modifique los puertos en los parámetros **siteUrl**, **Url**, **dashboardPage**, **staffPage** y **memberPage**, de acuerdo al puerto que Ghost está usando en su máquina.
+<br>* Modifique los parámetros **emaiLogin**, **passwordLogin** de acuerdo a los valores que estableció para crear su cuenta de Ghost.
+<br>* Modifique el parámetro **newwordLogin** con una contraseña valida que cumpla los requerimientos de Ghost, para que la contraseña actual pueda ser actualizada por la nueva contraseña. Para este ejercicio puede establecer el parámetro **newwordLogin** igual que su actual contraseña (**passwordLogin**) 
 
 ## Ejecución
-- Una vez realizada la configuración del archivo `utils.js` para lanzar la ejecucón de las pruebas, a través de la terminal ejecute el siguiente comando: `./node_modules/.bin/cypress run`. 
-- Si requiere lanzar la ejecucion de una prueba en particular ejecute el siguiente comando:
+- Una vez realizada la configuración del archivo `utils.js` se debe en primera instancia generar los Datapools a priori `Accounts.json`, `Posts.json` y `Pages.json`, para lo cual a través de la terminal y estando en la raíz del proyecto, debe ejecutar el siguiente comando `node index.js`, esto generara los archivos en la carpeta `./cypress/fixtures/`. 
+- Ya teniendo los archivos creados con datos aleatorios en la terminal ejecute el siguiente comando: `./node_modules/.bin/cypress run`, que lanzara la ejecucion de las diferentes pruebas de extremo a extremo que se encuentren en la carpeta `./cypress/integration/step-definitions`.
+- Si requiere lanzar la ejecución de una prueba en particular ejecute el siguiente comando:
 `./node_modules/.bin/cypress run --spec "ruta<step>"`, por ejemplo: ./node_modules/.bin/cypress run --spec "cypress/integration/step-definitions/13_modifyPage.spec.js"
 
 ## Resultados
-Cuando finalice la ejecución de la prueba, se generará en la carpeta `videos` un video de la ejecución en un navegador y adicional a esto se genera en la carpeta `screenshots` los pantallazos tomados durante la ejecución de la prueba.
-
-## Ventajas de utilizar esta herramienta
-
-Con base a la experiencia en el uso de la herramienta para la automatización de los diferentes escenarios de prueba mencionados en la parte superior de este documento, se concluye que la herramienta tiene las siguientes ventajas:
-
-- Cuenta con una amplia documentación y tutoriales disponibles en línea que facilita la búsqueda de información.
-- Su ejecución es rápida.
-- La interfaz gráfica es simple e intuitiva.
-- Permite diseñar y probar de manera sencilla diferentes tipos de test.
-- Se pueden ver de forma interactiva los pasos y acciones ejecutadas durante la prueba
-- Esta basado en Javascript que es un lenguaje ampliamente conocido y por ende facilita su aprendizaje para personas nuevas en el campo de pruebas de software.
-- Compatible con las versiones más actualizadas de nodejs.
-- Se puede extender sus funcionalidades con plugins.
-- Permite realizar la captura de pantalla y vídeos de forma automática.
-
-
-## Desventajas de utilizar esta herramienta
-
-Con base a la experiencia en el uso de la herramienta para la automatización de los diferentes escenarios de prueba mencionados en la parte superior de este documento, se concluye que la herramienta tiene las siguientes desventajas:
-
-- Los test a veces fallan aleatoriamente sin una razón aparente.
-- No soporta pruebas en la que se requieren dos browsers al mismo tiempo, como por ejemplo pruebas en una aplicación de chat.
-- Solo soporta Javascript para crear escenarios y/o casos de prueba.
-- No soportará test con múltiples navegadores al mismo tiempo.
-- Solo permite interactuar con una pestaña del navegador.
+Cuando finalice la ejecución de la prueba, se generará en la carpeta `videos` un video de la ejecución de las diferentes pruebas ejecutadas y adicional a esto se genera en la carpeta `./cypress/screenshots` los pantallazos tomados durante este proceso de pruebas automatizadas.
