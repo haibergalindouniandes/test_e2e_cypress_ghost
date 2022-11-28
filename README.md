@@ -9,7 +9,7 @@
 
 # Pruebas Automatizadas E2E Implementando Estrategias De Generación Datos 
 ## Aplicación Ghost (Version 5.22.10)
-Este proyecto permite realizar pruebas automatizadas de extremo a extremo de la aplicación Ghost, haciendo uso del API de Automatización Cypress (https://www.cypress.io/) y para la generación de datos se implementan las estrategias de Datapools a priori, Datapools dinámicos y generación online de datos.
+Este proyecto permite realizar pruebas automatizadas de extremo a extremo de la aplicación Ghost, haciendo uso del API de Automatización Cypress (https://www.cypress.io/) y para la generación de datos se implementan las estrategias de Pool de datos a-priori, Pool de datos (pseudo) aleatorio dinámico y Escenario aleatorio.
 
 ## Escenarios de prueba 
 El proyecto cuenta con una suite de pruebas principal que tiene 8 escenarios de prueba automatizadas y cada uno cuenta con sus sub-escenarios de pruebas implementando las diferentes estrategias de generación de datos mencionadas anteriormente. A continuación, se detalla la información de las pruebas a realizar:
