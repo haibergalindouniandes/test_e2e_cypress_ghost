@@ -19,9 +19,10 @@ const typeResultError = "Error";
 //Test setup
 
 describe("Update post DPAP", () => {
-  beforeEach(async function () {
-    const dataPostFixture = await cy.fixture("Posts.json");
-    this.postDataFixture = dataPostFixture;
+  beforeEach(function () {
+    cy.fixture("Posts.json").then(function(dataPostFixture){
+      this.postDataFixture = dataPostFixture;
+    })
   });
 
   it(`${escenario}_DPAP_SuccessData`, function () {

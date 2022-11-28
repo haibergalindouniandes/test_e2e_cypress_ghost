@@ -16,9 +16,10 @@ const typeResultError = "Error";
 
 //Test using data pool a priori
 describe("Create post DPAP", () => {
-  beforeEach(async function () {
-    const dataPostFixture = await cy.fixture("Posts.json");
-    this.postDataFixture = dataPostFixture;
+  beforeEach(function () {
+    cy.fixture("Posts.json").then(function(dataPostFixture){
+      this.postDataFixture = dataPostFixture;
+    })
   });
 
   it(`${escenario}_DPAP_SuccessData`, function () {
