@@ -16,7 +16,7 @@ class Pages {
     }
 
     submitLinkPages() {
-        return cy.get('a[href="#/pages/"]');
+        return cy.get('a[href="#/pages/"]').first();
     }
 
     firstPost() {
@@ -50,9 +50,11 @@ class Pages {
         return cy.get('textarea[placeholder="Page title"]'); 
     }
 
+    contentPage() {
+        return cy.get('div[data-placeholder="Begin writing your page..."]'); 
+    }
+
     buttonPublish() {
-        cy.get('a[href="#/pages/"').click({ force: true });
-        Utils.delay();
         return cy.get('button[class="gh-btn gh-btn-editor darkgrey gh-publish-trigger"]');  
     }
 
@@ -69,8 +71,9 @@ class Pages {
     }
 
     buttonUpdate() {
-        return cy.get('span').contains('Update').first();
-        //return cy.get('button[class="gh-btn gh-btn-editor gh-editor-save-trigger green ember-view"]');  
+        //return cy.get('span').contains('Update').first();
+        return cy.get('button[class="gh-btn gh-btn-editor gh-editor-save-trigger green ember-view"]');
+          
     }
 
     inputToSearch(){
@@ -107,7 +110,7 @@ class Pages {
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());        
     }
 
-    createPage(emailLogin, escenario) {
+    createPage(emailLogin, title, content, escenario) {
         this.submitLinkPages().click({ force: true });
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
@@ -116,9 +119,20 @@ class Pages {
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
         
-        this.titlePage().clear().type("holaMundo");        
-        Utils.delay();
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        if (String(title).length > 0) {
+            this.titlePage().clear().type(title);        
+            Utils.delay();
+            Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        }else {
+            this.titlePage().clear().type("borrar");
+            this.titlePage().clear(); 
+        }
+
+        if (String(content).length > 0) {
+            this.contentPage().clear().type(content);        
+            Utils.delay();
+            Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        }
         
         this.buttonPublish().click({ force: true });
         Utils.delay();
@@ -138,7 +152,7 @@ class Pages {
 
     }
 
-    modifyPage(emailLogin, escenario) {
+    modifyPage(emailLogin, title, content, escenario) {
         this.submitLinkPages().click({ force: true });
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
@@ -147,9 +161,20 @@ class Pages {
         Utils.delay();
         Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
         
-        this.titlePage().clear().type("holaMundo Modificado");        
-        Utils.delay();
-        Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        if (String(title).length > 0) {
+            this.titlePage().clear().type(title);        
+            Utils.delay();
+            Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        }else {
+            this.titlePage().clear().type("borrar");
+            this.titlePage().clear(); 
+        }
+
+        if (String(content).length > 0) {
+            this.contentPage().clear().type(content);        
+            Utils.delay();
+            Utils.takeScreenshot(emailLogin, escenario, "Paso_"+Utils.pruebaID());
+        }
         
         this.buttonUpdate().click({ force: true });
         Utils.delay();

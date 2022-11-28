@@ -1,19 +1,21 @@
 const delay = Cypress.env("delay") || 1000;
-const siteUrl = Cypress.config("baseUrl") || "http://localhost:3001/ghost/";
-const url = Cypress.env("url") || "http://localhost:3001/ghost/#/signin";
+const siteUrl = Cypress.config("baseUrl") || "http://localhost:2368/ghost/";
+const url = Cypress.env("url") || "http://localhost:2368/ghost/#/signin";
 const dashboardPage =
-  Cypress.env("dashboardPage") || "http://localhost:3001/ghost/#/dashboard";
+  Cypress.env("dashboardPage") || "http://localhost:2368/ghost/#/dashboard";
 const staffPage =
-  Cypress.env("staffPage") || "http://localhost:3001/ghost/#/settings/staff";
+  Cypress.env("staffPage") || "http://localhost:2368/ghost/#/settings/staff";
 const memberPage =
-  Cypress.env("memberPage") || "http://localhost:3001/ghost/#/members";
-const emailLogin = Cypress.env("emailLogin") || "miso@miso.com";
-const passwordLogin = Cypress.env("passwordLogin") || "miso123456";
+  Cypress.env("memberPage") || "http://localhost:2368/ghost/#/members";
+const emailLogin = Cypress.env("emailLogin") || "edgariel2004@gmail.com";
+const passwordLogin = Cypress.env("passwordLogin") || "1234512345";
 const newPassword = Cypress.env("newPassword") || "miso123456";
 const urlApiMockarooAccounts = 'https://my.api.mockaroo.com/pas/random/data/member.json';
 const urlApiMockarooPost = "https://my.api.mockaroo.com/post.json";
+const urlApiMockarooPage = "https://my.api.mockaroo.com/schemaCreatePage.json";
 const apikeyMockarooAccounts = 'ef45f480';
 const apikeyMockarooPost = "c96766b0";
+const apikeyMockarooPage = "1810ad40";
 const iterations = 1;
 
 let counter = 0;
@@ -120,6 +122,16 @@ export class Utils {
   //Function to get apikey to mockaroo of accounts
   static getApikeyMockarooPost() {
     return apikeyMockarooPost;
+  }
+
+  //Function to get endpoint to mockaroo of pages
+  static getEndPointMockarooPages() {
+    return urlApiMockarooPage;
+  }
+
+  //Function to get apikey to mockaroo of pages
+  static getApikeyMockarooPages() {
+    return apikeyMockarooPage;
   }
 
   //Function to allows slice a string
