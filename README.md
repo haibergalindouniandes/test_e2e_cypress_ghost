@@ -38,9 +38,9 @@ El proyecto cuenta con una suite de pruebas principal que tiene 8 escenarios de 
 | 08 | Modificar página | Escenario que realiza la modificación de una página existente con información aleatoria. |
 
 ### Estrategias de generación de datos
-- Generación de Datapools a priori: el proyecto cuenta con un archivo llamado `index.js` que le permitirá generar los archivos `Accounts.json`, `Posts.json` y `Pages.json` que serán utilizados para la realización de las pruebas.
-- Generación de Datapools dinámicos: para esta estrategia se hará uso del API de generación de datos aleatorios Mockaroo (https://mockaroo.com/), y se lanzará cada vez que se ejecute un escenario de prueba.
-- Generación de datos online: para la generación de datos online se hará uso de la librería Faker (https://fakerjs.dev/) que permitirá ir generando datos aleatorios a medida que sean solicitados.
+- **Pool de datos a-priori:** el proyecto cuenta con un archivo llamado `index.js` que le permitirá generar los archivos `Accounts.json`, `Posts.json` y `Pages.json` que serán utilizados para la realización de las pruebas.
+- **Pool de datos (pseudo) aleatorio dinámico:** para esta estrategia se hará uso del API de generación de datos aleatorios Mockaroo (https://mockaroo.com/), y se lanzará cada vez que se ejecute un escenario de prueba.
+- **Escenario aleatorio:** para la generación de datos online se hará uso de la librería Faker (https://fakerjs.dev/) que permitirá ir generando datos aleatorios a medida que sean solicitados.
 
 
 En el siguiente documento podrá encontrar la información más detallada acerca de las pruebas realizadas, su objetivo, resultado esperado y estrategia de generación de datos utilizada. 
