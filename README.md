@@ -45,8 +45,7 @@ El proyecto cuenta con una suite de pruebas principal que tiene 8 escenarios de 
 
 En el siguiente documento podrá encontrar la información más detallada acerca de las pruebas realizadas, su objetivo, resultado esperado y estrategia de generación de datos utilizada. 
 
-
-[EscenariosDePruebasAutomatizacionGhost.xlsx](https://github.com/haibergalindouniandes/test_e2e_cypress_ghost/files/10100385/EscenariosDePruebasAutomatizacionGhost.xlsx)
+[EscenariosDePruebasAutomatizacionGhost.xlsx](https://github.com/haibergalindouniandes/test_e2e_cypress_ghost/files/10100519/EscenariosDePruebasAutomatizacionGhost.xlsx)
 
 
 ## Estructura de carpetas
